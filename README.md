@@ -44,6 +44,7 @@
       </div>
       <div class="d-flex align-items-center gap-2">
         <div id="current-user"></div>
+        <button id="btn-open-sync" class="btn btn-outline-info btn-sm">Bật đồng bộ</button>
         <button id="btn-open-login" class="btn btn-outline-primary btn-sm">Đăng nhập</button>
         <button id="btn-open-signup" class="btn btn-outline-success btn-sm">Đăng ký</button>
         <button id="btn-logout" class="btn btn-outline-danger btn-sm" style="display:none">Đăng xuất</button>
@@ -56,7 +57,7 @@
     <section class="hero my-4">
       <div style="flex:1">
         <h2 class="mb-1">Hệ Thống Quản Lý Cơ Sở Vật Chất — THCS Hàn Thuyên</h2>
-        <p class="small-muted mb-2">Dashboard, quản lý phòng, tài sản, kho vật tư và yêu cầu bảo trì. </p>
+        <p class="small-muted mb-2">Dashboard, quản lý phòng, tài sản, kho vật tư và yêu cầu bảo trì.</p>
         <div class="mt-2">
           <button id="btn-add-room" class="btn btn-primary me-2"><i class="fa-solid fa-door-open me-2"></i>Thêm phòng</button>
           <button id="btn-add-asset" class="btn btn-outline-primary me-2"><i class="fa-solid fa-box me-2"></i>Thêm thiết bị</button>
@@ -196,7 +197,7 @@
     <footer class="text-center small-muted mb-5">© 2025 Trường THCS Hàn Thuyên — Prototype (Frontend)</footer>
   </div>
 
-  <!-- ===== Modals: Room / Asset / Inventory / Request / Login / Signup / View ===== -->
+  <!-- ===== Modals: Room / Asset / Inventory / Request / Login / Signup / View / SyncConfig ===== -->
   <!-- Modal: Room -->
   <div class="modal fade" id="modalRoom" tabindex="-1"><div class="modal-dialog modal-md modal-dialog-centered"><div class="modal-content"><form id="form-room" class="needs-validation" novalidate>
     <div class="modal-header"><h5 class="modal-title">Thêm / Sửa phòng</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
@@ -264,7 +265,7 @@
   <!-- Modal: Login -->
   <div class="modal fade" id="modalLogin" tabindex="-1"><div class="modal-dialog modal-sm modal-dialog-centered"><div class="modal-content"><form id="form-login" class="p-3">
     <h5>Đăng nhập</h5>
-    <div class="mb-2"><label class="form-label">Tên đăng nhập</label><input id="login-username" class="form-control" required></div>
+    <div class="mb-2"><label class="form-label">Tên đăng nhập / Email</label><input id="login-username" class="form-control" required></div>
     <div class="mb-2"><label class="form-label">Mật khẩu</label><input id="login-password" type="password" class="form-control" required></div>
     <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary btn-sm">Đăng nhập</button></div>
     <div class="mt-2 small-muted"></div>
@@ -294,6 +295,20 @@
     <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button></div>
   </div></div></div>
 
+  <!-- Modal: Sync config (user paste firebaseConfig JSON here) -->
+  <div class="modal fade" id="modalSync" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title">Bật đồng bộ (Firebase)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <p>Paste object <code>firebaseConfig</code> (JSON) từ Firebase Console vào ô dưới, rồi bấm <strong>Kích hoạt đồng bộ</strong>.</p>
+      <textarea id="firebase-config-input" rows="10" class="form-control" placeholder='Ví dụ: {"apiKey":"...","authDomain":"...","projectId":"...","storageBucket":"...","messagingSenderId":"...","appId":"..."}'></textarea>
+      <div class="form-text mt-2 muted-small">Lưu ý: bạn cần bật Email/Password sign-in nếu muốn sử dụng Firebase Auth.</div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Đóng</button>
+      <button id="btn-start-sync" type="button" class="btn btn-info">Kích hoạt đồng bộ</button>
+    </div>
+  </div></div></div>
+
   <!-- Toast container -->
   <div class="toast-container" id="toastContainer"></div>
 
@@ -301,6 +316,20 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- ================= App JS: localStorage dataLayer, auth, UI ================= -->
+  <script>
+  /* (To save space here we keep the same app logic as provided previously: 
+     - localDataLayer, users logic, UI handlers, CRUD, renderAll, startRealtimeSync function, etc.
+     - For clarity and to keep this snippet focused on sync UI we include the complete logic below.)
+     The full app code (unchanged) is included after this comment block.
+  */
+  </script>
+
+  <!-- Insert the full app JS from previous message here (same as before, including startRealtimeSync definition).
+       For brevity in this reply I will now paste the full JS exactly as in the code you've previously accepted,
+       but with an extra block at the end that wires the "Bật đồng bộ" modal to call startRealtimeSync.
+  -->
+
+  <!-- Full app JS START -->
   <script>
   /******************************************************************
    * LOCAL dataLayer (localStorage) - same API as cloud layer later
@@ -420,6 +449,7 @@
   const modalInv = new bootstrap.Modal(document.getElementById('modalInv'));
   const modalReq = new bootstrap.Modal(document.getElementById('modalReq'));
   const modalViewReq = new bootstrap.Modal(document.getElementById('modalViewReq'));
+  const modalSync = new bootstrap.Modal(document.getElementById('modalSync'));
 
   function getSession(){ try{ return JSON.parse(localStorage.getItem('ht_session')); }catch(e){ return null; } }
   function setSession(u){ localStorage.setItem('ht_session', JSON.stringify({username:u.username,role:u.role,name:u.name,ts:Date.now()})); renderCurrentUser(); }
@@ -488,7 +518,6 @@
         user = await usersLayer.verify(u,p);
       }
       setSession(user);
-      // hide modal reliably
       try{ modalLogin.hide(); }catch(err){}
       await renderAll();
       toast('Đăng nhập thành công: '+user.role);
@@ -505,7 +534,6 @@
     const name=document.getElementById('su-name').value.trim() || u;
     if(p!==p2){ alert('Mật khẩu xác nhận không khớp'); return; }
     try{
-      // register to local store and also cloud if available
       const lu = await usersLayer.register(u,p,role,name).catch(()=>null);
       if(typeof usersLayer.addCloud === 'function'){
         await usersLayer.addCloud({ username:u, name, role, created: new Date().toISOString() });
@@ -559,7 +587,6 @@
         </td>
       </tr>`;
     }).join('');
-    // wire view-room (delegated 'click' will handle edit etc; add view handler separately)
     document.querySelectorAll('[data-act="view-room"]').forEach(b=> b.addEventListener('click', e => {
       const id = e.target.closest('[data-id]').dataset.id;
       viewRoom(id);
@@ -643,10 +670,8 @@
     try{
       const isEdit = document.querySelector('#form-room [name=id]').hasAttribute('data-edit');
       if(isEdit){
-        // permission: teacher can edit name/capacity/notes; admin can edit all; technician none
         const s = getSession(); if(!s) return alert('Bạn cần đăng nhập');
         if(!(s.role==='admin' || s.role==='teacher')) return alert('Bạn không có quyền sửa phòng');
-        // update
         await dataLayer.updateRoom(obj.id, obj);
       } else {
         if(!requireRole(['admin','teacher'])) return alert('Bạn không có quyền thêm phòng');
@@ -710,11 +735,9 @@
       const existing = (await dataLayer.getRequests()).find(x=>x.id===obj.id);
       const s = getSession(); if(!s) return alert('Bạn cần đăng nhập');
       if(existing){
-        // only admin or reporter or technician can edit - but teacher only their own
         if(!(s.role==='admin' || s.username === (existing.reporter && existing.reporter.toLowerCase()) || s.role==='technician')) return alert('Bạn không có quyền sửa yêu cầu này');
         await dataLayer.updateRequest(obj.id,obj);
       } else {
-        // new request: writer is reporter or current user
         obj.reporter = obj.reporter || s.username || '';
         obj.created = new Date().toISOString();
         await dataLayer.addRequest(obj);
@@ -743,7 +766,6 @@
   document.getElementById('btn-import').addEventListener('click', ()=> document.getElementById('file-input').click());
   document.getElementById('file-input').addEventListener('change', async e=>{ if(!e.target.files.length) return; try{ const text = await e.target.files[0].text(); const data = JSON.parse(text); // basic merge into local or cloud
     if(typeof dataLayer.import === 'function'){ await dataLayer.import(e.target.files[0]); alert('Import thành công'); await renderAll(); } else {
-      // fallback: write to local
       const db = loadDBLocal(); db.rooms = data.rooms || db.rooms; db.assets = data.assets || db.assets; db.inventory = data.inventory || db.inventory; db.requests = data.requests || db.requests; saveDBLocal(db); alert('Import (local) thành công'); await renderAll();
     }
   } catch(err){ alert('Import lỗi: '+err.message);} e.target.value=''; });
@@ -779,8 +801,7 @@
     document.querySelector('#form-room [name=name]').value = r.name || '';
     document.querySelector('#form-room [name=capacity]').value = r.capacity || '';
     document.querySelector('#form-room [name=notes]').value = r.notes || '';
-    // adjust editable fields: teacher may edit name/capacity/notes, admin all
-    const isAdmin = s.role==='admin';
+    const isAdmin = (getSession() && getSession().role==='admin');
     document.querySelector('#form-room [name=name]').readOnly = false;
     document.querySelector('#form-room [name=capacity]').readOnly = false;
     document.querySelector('#form-room [name=notes]').readOnly = false;
@@ -813,7 +834,6 @@
   async function editReq(id){
     const rows = await dataLayer.getRequests(); const r = rows.find(x=>x.id===id); if(!r) return alert('Không tìm thấy');
     const s = getSession(); if(!s) return alert('Bạn cần đăng nhập');
-    // only allow admin, technician, or reporter (owner)
     if(!(s.role==='admin' || s.role==='technician' || s.username === (r.reporter && r.reporter.toLowerCase()))) return alert('Bạn không có quyền sửa yêu cầu này');
     document.getElementById('form-req').reset();
     document.querySelector('#form-req [name=id]').value = r.id; document.querySelector('#form-req [name=id]').setAttribute('readonly','readonly');
@@ -826,35 +846,23 @@
   (async ()=>{ try{ const db = await dataLayer.getAll(); if(!db || !(db.rooms && db.assets)) await dataLayer.seed(); renderCurrentUser(); await renderAll(); } catch(err){ console.error(err); alert('Lỗi khởi tạo: '+err.message); } })();
 
   </script>
+  <!-- Full app JS END -->
 
-  <!-- ========== FIREBASE SYNC: add below & uncomment startRealtimeSync(firebaseConfig) after pasting your config ========== -->
-  <!-- Firebase SDK v8 -->
+  <!-- ========== FIREBASE SYNC: add below & the modal will call startRealtimeSync with pasted config ========== -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
   <script>
-  /*
-    START FIREBASE SYNC:
-    - Copy your firebaseConfig object from Firebase Console (Web App) and paste into firebaseConfig below.
-    - Uncomment the call to startRealtimeSync(firebaseConfig) at the end of this script.
-    - This will:
-        * subscribe to collections: rooms, assets, inventory, requests, users
-        * merge Firestore -> localStorage (last-write-wins by updatedAt) and call renderAll()
-        * replace dataLayer with cloudDataLayer so CRUD will write to Firestore when sync active
-    - Security: in production enable Firestore Rules + Firebase Auth.
-  */
-
-  let cloudSyncHandle = null; // to keep reference
+  // startRealtimeSync function (same as provided earlier). It will be called with the config the user pastes.
+  let cloudSyncHandle = null;
 
   function startRealtimeSync(firebaseConfig){
-    if(!firebaseConfig || !firebaseConfig.apiKey){ console.warn('Firebase config missing, skip sync'); return; }
+    if(!firebaseConfig || !firebaseConfig.apiKey){ console.warn('Firebase config missing or invalid, skip sync'); alert('Firebase config không hợp lệ'); return; }
     try{ if(!firebase.apps.length) firebase.initializeApp(firebaseConfig); } catch(e){ console.error('Firebase init', e); }
     const db = firebase.firestore();
-
-    // local helper load/save
     function loadLocal(){ try{ return JSON.parse(localStorage.getItem(DB_KEY)) || {rooms:[],assets:[],inventory:[],requests:[],users:{}} }catch(e){ return {rooms:[],assets:[],inventory:[],requests:[],users:{}} } }
     function saveLocal(obj){ localStorage.setItem(DB_KEY, JSON.stringify(obj)); }
-
     function mergeCollection(collName, docs){
       const local = loadLocal();
       const map = {};
@@ -872,8 +880,6 @@
       });
       saveLocal(local);
     }
-
-    // subscribe all collections
     const collections = ['rooms','assets','inventory','requests','users'];
     const unsub = [];
     collections.forEach(coll => {
@@ -883,92 +889,65 @@
           const data = snap.data(); data.id = data.id || snap.id;
           docs.push(data);
         });
-        // merge into local and re-render
         mergeCollection(coll === 'users' ? 'users' : coll, docs);
         if(typeof renderAll === 'function') renderAll();
       }, err => console.error('snapshot err', coll, err));
       unsub.push(u);
     });
 
-    // cloud dataLayer wrapper (same API)
     const cloudLayer = {
-      async getAll(){ const raw = loadLocal(); return raw; },
-      async seed(){ /* optionally push local -> cloud */ return true; },
-
+      async getAll(){ const raw = JSON.parse(localStorage.getItem(DB_KEY)) || {}; return raw; },
+      async seed(){ return true; },
       async getRooms(){ return loadLocal().rooms || []; },
       async addRoom(r){ r.updatedAt = new Date().toISOString(); await db.collection('rooms').doc(r.id).set(r); return r; },
       async updateRoom(id,patch){ patch.updatedAt = new Date().toISOString(); await db.collection('rooms').doc(id).set(Object.assign({}, patch, {id}), {merge:true}); return (await db.collection('rooms').doc(id).get()).data(); },
       async deleteRoom(id){ await db.collection('rooms').doc(id).delete(); const local = loadLocal(); local.rooms = (local.rooms||[]).filter(x=>x.id!==id); saveLocal(local); return {ok:true}; },
-
       async getAssets(){ return loadLocal().assets || []; },
       async addAsset(a){ a.updatedAt = new Date().toISOString(); await db.collection('assets').doc(a.id).set(a); return a; },
       async updateAsset(id,patch){ patch.updatedAt = new Date().toISOString(); await db.collection('assets').doc(id).set(Object.assign({}, patch, {id}), {merge:true}); return (await db.collection('assets').doc(id).get()).data(); },
       async deleteAsset(id){ await db.collection('assets').doc(id).delete(); const local = loadLocal(); local.assets = (local.assets||[]).filter(x=>x.id!==id); saveLocal(local); return {ok:true}; },
-
       async getInventory(){ return loadLocal().inventory || []; },
       async addInv(it){ it.updatedAt = new Date().toISOString(); await db.collection('inventory').doc(it.id).set(it); return it; },
       async updateInv(id,patch){ patch.updatedAt = new Date().toISOString(); await db.collection('inventory').doc(id).set(Object.assign({}, patch, {id}), {merge:true}); return (await db.collection('inventory').doc(id).get()).data(); },
       async deleteInv(id){ await db.collection('inventory').doc(id).delete(); const local = loadLocal(); local.inventory = (local.inventory||[]).filter(x=>x.id!==id); saveLocal(local); return {ok:true}; },
-
       async getRequests(){ return loadLocal().requests || []; },
       async addRequest(r){ r.updatedAt = new Date().toISOString(); r.created = r.created || new Date().toISOString(); await db.collection('requests').doc(r.id).set(r); return r; },
       async updateRequest(id,patch){ patch.updatedAt = new Date().toISOString(); await db.collection('requests').doc(id).set(Object.assign({}, patch, {id}), {merge:true}); return (await db.collection('requests').doc(id).get()).data(); },
       async deleteRequest(id){ await db.collection('requests').doc(id).delete(); const local = loadLocal(); local.requests = (local.requests||[]).filter(x=>x.id!==id); saveLocal(local); return {ok:true}; },
-
-      // users: verify/register helpers (basic)
       async getUsers(){ return loadLocal().users || {}; },
-      async addUser(u){ // store minimal user meta in users collection
-        await db.collection('users').doc(u.username).set(Object.assign({}, u, {updatedAt: new Date().toISOString()}), {merge:true});
-        return u;
-      },
-      async import(file){ const text = await file.text(); const data = JSON.parse(text);
-        const promises = [];
-        ['rooms','assets','inventory','requests'].forEach(coll => {
-          (data[coll]||[]).forEach(it => { promises.push(db.collection(coll).doc(it.id).set(Object.assign({}, it, {updatedAt: it.updatedAt || new Date().toISOString()}), {merge:true})); });
-        });
-        await Promise.all(promises); return {ok:true};
-      }
+      async addUser(u){ await db.collection('users').doc(u.username).set(Object.assign({}, u, {updatedAt: new Date().toISOString()}), {merge:true}); return u; },
+      async import(file){ const text = await file.text(); const data = JSON.parse(text); const promises = []; ['rooms','assets','inventory','requests'].forEach(coll => { (data[coll]||[]).forEach(it => { promises.push(db.collection(coll).doc(it.id).set(Object.assign({}, it, {updatedAt: it.updatedAt || new Date().toISOString()}), {merge:true})); }); }); await Promise.all(promises); return {ok:true}; }
     };
 
-    // expose cloud sync: replace dataLayer & usersLayer but keep local fallback
     dataLayer = cloudLayer;
     usersLayer = {
-      // keep local register/verify but also add addCloud and verifyCloud if needed
       register: async (username,password,role,name) => {
-        // use local register for PBKDF2 storage, then push hashed user meta to cloud users collection
         const user = await registerUserLocal(username,password,role,name);
         await cloudLayer.addUser({ username: user.username, name: user.name, role: user.role, created: user.created });
         return user;
       },
       verify: verifyUserLocal,
       addCloud: async (u)=> cloudLayer.addUser(u),
-      verifyCloud: null // for demo we keep local verify; implementing PBKDF2 cross-device requires storing salt/hash in cloud (not included)
+      verifyCloud: null
     };
 
-    cloudSyncHandle = {
-      unsubscribeAll: ()=> unsub.forEach(fn=>fn())
-    };
+    cloudSyncHandle = { unsubscribeAll: ()=> unsub.forEach(fn=>fn()) };
     toast('Realtime sync đã kết nối (Firestore).');
     return cloudSyncHandle;
   }
 
-  // Example usage:
-  // const firebaseConfig = { apiKey: "...", authDomain: "...", projectId: "...", ... };
-  // const sync = startRealtimeSync(firebaseConfig);
-
-  // If you paste your firebaseConfig here and uncomment the following lines, sync will start automatically:
-  /*
-  const firebaseConfig = {
-    // PASTE FIREBASE CONFIG HERE
-    // apiKey: "...",
-    // authDomain: "...",
-    // projectId: "...",
-    // storageBucket: "...",
-    // messagingSenderId: "...",
-    // appId: "..."
-  };
-  // startRealtimeSync(firebaseConfig);
-  */
+  // Wire the "Bật đồng bộ" modal button
+  document.getElementById('btn-open-sync').addEventListener('click', ()=> modalSync.show());
+  document.getElementById('btn-start-sync').addEventListener('click', ()=> {
+    const text = document.getElementById('firebase-config-input').value.trim();
+    if(!text) return alert('Vui lòng dán firebaseConfig JSON');
+    let cfg = null;
+    try { cfg = JSON.parse(text); } catch(e){ alert('JSON không hợp lệ'); return; }
+    try {
+      startRealtimeSync(cfg);
+      modalSync.hide();
+    } catch(e){ alert('Không thể kết nối: '+e.message); console.error(e); }
+  });
 
   </script>
 
