@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Quản Lý Cơ Sở Vật Chất - THCS Hàn Thuyên (Demo: Auth + Asset)</title>
+  <title>Quản Lý Cơ Sở Vật Chất - THCS Hàn Thuyên </title>
 
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,11 +24,11 @@
     .small-muted{ color:var(--muted); font-size:0.9rem; }
     .role-badge { text-transform:uppercase; font-weight:600; font-size:0.75rem; padding:4px 8px; border-radius:999px; }
     .asset-preview{ max-height:160px; object-fit:cover; border-radius:8px; }
-    .toast-container{ position: fixed; right: 20px; top: 80px; z-index: 1080; }
-    @media (max-width:900px){ .hero{flex-direction:column;text-align:center} .hero img{max-width:100%} }
     .pw-strength { height:8px; border-radius:6px; background:#e9ecef; overflow:hidden; }
     .pw-strength > i { display:block; height:100%; width:0%; background:linear-gradient(90deg,#ff6b6b,#ffd166,#06d6a0); transition:width .25s; }
     .muted-small { color:#6c757d; font-size:0.85rem; }
+    @media (max-width:900px){ .hero{flex-direction:column;text-align:center} .hero img{max-width:100%} }
+    .toast-container{ position: fixed; right: 20px; top: 80px; z-index: 1080; }
   </style>
 </head>
 <body>
@@ -56,11 +56,11 @@
     <section class="hero my-4">
       <div style="flex:1">
         <h2 class="mb-1">Hệ Thống Quản Lý Cơ Sở Vật Chất — THCS Hàn Thuyên</h2>
-        <p class="small-muted mb-2">Dashboard, quản lý phòng, tài sản, kho vật tư và yêu cầu bảo trì. (Demo: auth client-side & lưu localStorage)</p>
+        <p class="small-muted mb-2">Dashboard, quản lý phòng, tài sản, kho vật tư và yêu cầu bảo trì. </p>
         <div class="mt-2">
           <button id="btn-add-room" class="btn btn-primary me-2"><i class="fa-solid fa-door-open me-2"></i>Thêm phòng</button>
           <button id="btn-add-asset" class="btn btn-outline-primary me-2"><i class="fa-solid fa-box me-2"></i>Thêm thiết bị</button>
-          <button id="btn-add-request" class="btn btn-outline-warning"><i class="fa-solid fa-wrench me-2"></i>Tạo yêu cầu</button>
+          <button id="btn-add-request" class="btn btn-outline-warning me-2"><i class="fa-solid fa-wrench me-2"></i>Tạo yêu cầu</button>
           <button id="btn-export" class="btn btn-outline-secondary"><i class="fa-solid fa-file-export me-2"></i>Xuất dữ liệu</button>
           <button id="btn-import" class="btn btn-outline-secondary"><i class="fa-solid fa-file-import me-2"></i>Nhập dữ liệu</button>
           <input id="file-input" type="file" accept="application/json" style="display:none" />
@@ -196,7 +196,7 @@
     <footer class="text-center small-muted mb-5">© 2025 Trường THCS Hàn Thuyên — Prototype (Frontend)</footer>
   </div>
 
-  <!-- ===== Modals (same structure) ===== -->
+  <!-- ===== Modals: Room / Asset / Inventory / Request / Login / Signup / View ===== -->
   <!-- Modal: Room -->
   <div class="modal fade" id="modalRoom" tabindex="-1"><div class="modal-dialog modal-md modal-dialog-centered"><div class="modal-content"><form id="form-room" class="needs-validation" novalidate>
     <div class="modal-header"><h5 class="modal-title">Thêm / Sửa phòng</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
@@ -205,7 +205,7 @@
       <div class="mb-2"><label class="form-label">Tên phòng</label><input name="name" class="form-control" required></div>
       <div class="mb-2"><label class="form-label">Sức chứa</label><input name="capacity" type="number" class="form-control"></div>
       <div class="mb-2"><label class="form-label">Ghi chú</label><textarea name="notes" class="form-control"></textarea></div>
-      <div class="muted-small mt-2">Ghi chú quyền: Giáo viên có thể chỉnh tên, sức chứa, ghi chú; Admin chỉnh mọi trường hợp; Kỹ thuật viên không chỉnh phòng.</div>
+      <div class="muted-small mt-2">Ghi chú quyền: Giáo viên có thể chỉnh tên, sức chứa, ghi chú; Admin chỉnh mọi trường; Kỹ thuật viên không chỉnh phòng.</div>
     </div>
     <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button><button type="submit" class="btn btn-primary">Lưu</button></div>
   </form></div></div></div>
@@ -228,7 +228,7 @@
         <div class="col-md-6"><label class="form-label">Ảnh (tùy chọn)</label><input name="image" type="file" accept="image/*" class="form-control form-control-sm"><div class="mt-2"><img id="asset-preview" class="asset-preview" src="" alt="" style="display:none"></div></div>
         <div class="col-12"><label class="form-label">Mô tả</label><textarea name="desc" class="form-control" rows="3"></textarea></div>
       </div>
-      <div class="muted-small mt-2">Ghi chú quyền: Kỹ thuật viên có thể chỉnh trạng thái, mô tả, phòng, nhà cung cấp, bảo hành; Giáo viên chỉ được xem; Admin toàn quyền.</div>
+      <div class="muted-small mt-2">Ghi chú quyền: Kỹ thuật viên có thể chỉnh trạng thái, mô tả, phòng, nhà cung cấp, bảo hành; Giáo viên chỉ xem; Admin toàn quyền.</div>
     </div>
     <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button><button type="submit" class="btn btn-primary">Lưu tài sản</button></div>
   </form></div></div></div>
@@ -267,7 +267,7 @@
     <div class="mb-2"><label class="form-label">Tên đăng nhập</label><input id="login-username" class="form-control" required></div>
     <div class="mb-2"><label class="form-label">Mật khẩu</label><input id="login-password" type="password" class="form-control" required></div>
     <div class="d-flex justify-content-end"><button type="submit" class="btn btn-primary btn-sm">Đăng nhập</button></div>
-    <div class="mt-2 small-muted">Demo accounts: admin/admin, teacher/teacher, tech/tech</div>
+    <div class="mt-2 small-muted"></div>
   </form></div></div></div>
 
   <!-- Modal: Signup -->
@@ -287,9 +287,9 @@
     <div class="mt-3 d-flex justify-content-end"><button type="button" class="btn btn-outline-secondary btn-sm me-2" data-bs-dismiss="modal">Hủy</button><button type="submit" class="btn btn-success btn-sm">Đăng ký</button></div>
   </form></div></div></div>
 
-  <!-- Modal: View Request (detail) -->
+  <!-- Modal: View Request / Generic Detail -->
   <div class="modal fade" id="modalViewReq" tabindex="-1"><div class="modal-dialog modal-md modal-dialog-centered"><div class="modal-content">
-    <div class="modal-header"><h5 class="modal-title" id="view-req-title">Yêu cầu</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-header"><h5 class="modal-title" id="view-req-title">Chi tiết</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
     <div class="modal-body" id="view-req-body"></div>
     <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button></div>
   </div></div></div>
@@ -300,78 +300,130 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- ================= App JS ================= -->
+  <!-- ================= App JS: localStorage dataLayer, auth, UI ================= -->
   <script>
-  // DB key (kept for compatibility)
-  const DB_KEY = 'minhkai_full_v1';
+  /******************************************************************
+   * LOCAL dataLayer (localStorage) - same API as cloud layer later
+   ******************************************************************/
+  const DB_KEY = 'hanthuyen_full_v1';
+  function loadDBLocal(){ try{ return JSON.parse(localStorage.getItem(DB_KEY)) || { rooms:[], assets:[], inventory:[], requests:[], users:{} } }catch(e){ return { rooms:[], assets:[], inventory:[], requests:[], users:{} } } }
+  function saveDBLocal(db){ localStorage.setItem(DB_KEY, JSON.stringify(db)); }
 
-  /***** Helpers: WebCrypto PBKDF2 (demo) *****/
+  // Local user store (for demo). When cloud sync is enabled, we will sync users to Firestore as well.
+  const USER_KEY = 'ht_users_v1';
+  function readUsersLocal(){ try{ return JSON.parse(localStorage.getItem(USER_KEY)) || {}; }catch(e){ return {}; } }
+  function writeUsersLocal(u){ localStorage.setItem(USER_KEY, JSON.stringify(u)); }
+
+  // Simple PBKDF2 demo hashing (client-side only)
   async function genSalt(len=16){ const arr = crypto.getRandomValues(new Uint8Array(len)); return btoa(String.fromCharCode(...arr)); }
   function b64ToArrayBuffer(b64){ const bin=atob(b64); const len=bin.length; const arr=new Uint8Array(len); for(let i=0;i<len;i++) arr[i]=bin.charCodeAt(i); return arr.buffer; }
   function arrayBufferToB64(buf){ const bytes=new Uint8Array(buf); let bin=''; for(let i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]); return btoa(bin); }
-  async function deriveKey(password, saltB64, iterations=150000, length=32){ const enc=new TextEncoder(); const key = await crypto.subtle.importKey('raw', enc.encode(password), {name:'PBKDF2'}, false, ['deriveBits']); const bits = await crypto.subtle.deriveBits({name:'PBKDF2', salt: b64ToArrayBuffer(saltB64), iterations, hash:'SHA-256'}, key, length*8); return arrayBufferToB64(bits); }
+  async function deriveKey(password, saltB64, iterations=120000, length=32){ const enc = new TextEncoder(); const key = await crypto.subtle.importKey('raw', enc.encode(password), {name:'PBKDF2'}, false, ['deriveBits']); const bits = await crypto.subtle.deriveBits({name:'PBKDF2', salt: b64ToArrayBuffer(saltB64), iterations, hash:'SHA-256'}, key, length*8); return arrayBufferToB64(bits); }
 
-  /***** Users (localStorage demo) *****/
-  const USER_KEY = 'mk_users_full_v1';
-  function readUsers(){ try{ return JSON.parse(localStorage.getItem(USER_KEY)) || {}; }catch(e){ return {}; } }
-  function writeUsers(u){ localStorage.setItem(USER_KEY, JSON.stringify(u)); }
-  async function registerUser(username, password, role='teacher', name=''){ username = username.trim().toLowerCase(); if(!username || !password) throw new Error('Username và password là bắt buộc'); const users = readUsers(); if(users[username]) throw new Error('Tên đăng nhập đã tồn tại'); if(password.length < 6) throw new Error('Mật khẩu quá ngắn (>=6)'); const salt = await genSalt(); const hash = await deriveKey(password, salt); users[username] = { username, name: name||username, role, salt, hash, created: new Date().toISOString() }; writeUsers(users); return users[username]; }
-  async function verifyUser(username, password){ username = (username||'').trim().toLowerCase(); const users = readUsers(); const u = users[username]; if(!u) throw new Error('Người dùng không tồn tại'); const check = await deriveKey(password, u.salt); if(check !== u.hash) throw new Error('Mật khẩu không đúng'); return u; }
-  (function seedUsers(){ const users = readUsers(); if(!users['admin']){ registerUser('admin','admin','admin','Quản trị').catch(()=>{}); registerUser('teacher','teacher','teacher','GV Nguyễn').catch(()=>{}); registerUser('tech','tech','technician','Kỹ thuật').catch(()=>{}); } })();
+  // Local register/verify
+  async function registerUserLocal(username, password, role='teacher', name=''){
+    username = username.trim().toLowerCase();
+    if(!username || !password) throw new Error('Username và password là bắt buộc');
+    const users = readUsersLocal();
+    if(users[username]) throw new Error('Tên đăng nhập đã tồn tại');
+    if(password.length < 6) throw new Error('Mật khẩu quá ngắn (>=6)');
+    const salt = await genSalt();
+    const hash = await deriveKey(password, salt);
+    users[username] = { username, name: name||username, role, salt, hash, created: new Date().toISOString() };
+    writeUsersLocal(users);
+    return users[username];
+  }
+  async function verifyUserLocal(username, password){
+    username = (username||'').trim().toLowerCase();
+    const users = readUsersLocal();
+    const u = users[username];
+    if(!u) throw new Error('Người dùng không tồn tại');
+    const check = await deriveKey(password, u.salt);
+    if(check !== u.hash) throw new Error('Mật khẩu không đúng');
+    return u;
+  }
 
-  /***** Data layer (localStorage) *****/
-  function loadDB(){ try{ return JSON.parse(localStorage.getItem(DB_KEY)) || null; }catch(e){ return null; } }
-  function saveDB(db){ localStorage.setItem(DB_KEY, JSON.stringify(db)); }
+  // seed demo users if none
+  (async ()=>{
+    const users = readUsersLocal();
+    if(!users['admin']){
+      try{ await registerUserLocal('admin','admin','admin','Quản trị'); await registerUserLocal('teacher','teacher','teacher','GV Nguyễn'); await registerUserLocal('tech','tech','technician','Kỹ thuật'); }catch(e){}
+    }
+  })();
 
-  const dataLayer = {
-    async getAll(){ return loadDB(); },
-    async seed(){ const now=new Date().toISOString(); const db={ rooms:[{id:'R101',name:'Lớp 6A',capacity:30,notes:'Tầng 1'},{id:'R102',name:'Lớp 6B',capacity:28,notes:'Tầng 1'}], assets:[{id:'A001',name:'Máy chiếu Epson',room:'R101',status:'normal',purchased:'2021-08-15',image:''}], inventory:[{id:'I001',name:'Phấn viết bảng',qty:50,unit:'bịch'}], requests:[{id:'REQ001',title:'Máy chiếu không lên',room:'R101',reporter:'GV Nguyễn',desc:'Máy không khởi động',status:'open',created:now}], log:[] }; saveDB(db); return db; },
+  /******************************************************************
+   * LOCAL dataLayer (CRUD) - used by default
+   ******************************************************************/
+  const localDataLayer = {
+    async getAll(){ return loadDBLocal(); },
+    async seed(){
+      const now = new Date().toISOString();
+      const db = {
+        rooms:[
+          {id:'R101',name:'Lớp 6A',capacity:32,notes:'Tầng 1', updatedAt: now},
+          {id:'R102',name:'Lớp 7B',capacity:30,notes:'Tầng 2', updatedAt: now}
+        ],
+        assets:[
+          {id:'A001',name:'Máy chiếu Epson',room:'R101',status:'normal',purchased:'2021-08-15',image:'',desc:'Máy chiếu phòng 6A', updatedAt: now}
+        ],
+        inventory:[
+          {id:'I001',name:'Phấn viết bảng',qty:50,unit:'bịch', updatedAt: now}
+        ],
+        requests:[
+          {id:'REQ001',title:'Máy chiếu không lên',room:'R101',reporter:'GV A',desc:'Máy không khởi động',status:'open',created:now, updatedAt: now}
+        ],
+        users: readUsersLocal()
+      };
+      saveDBLocal(db); return db;
+    },
 
     // rooms
-    async getRooms(){ const db=loadDB(); return (db && db.rooms) ? db.rooms : []; },
-    async addRoom(r){ const db=loadDB()||{rooms:[],assets:[],inventory:[],requests:[],log:[]}; if(db.rooms.find(x=>x.id===r.id)) throw new Error('Mã phòng đã tồn tại'); db.rooms.push(r); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'add_room',target:r.id}); return r; },
-    async updateRoom(id,patch){ const db=loadDB(); const idx=db.rooms.findIndex(x=>x.id===id); if(idx<0) throw new Error('Không tìm thấy'); db.rooms[idx]=Object.assign(db.rooms[idx],patch); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'update_room',target:id,patch}); return db.rooms[idx]; },
-    async deleteRoom(id){ const db=loadDB(); db.rooms=db.rooms.filter(x=>x.id!==id); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'delete_room',target:id}); return {ok:true}; },
+    async getRooms(){ const db = loadDBLocal(); return db.rooms || []; },
+    async addRoom(r){ const db = loadDBLocal(); if(db.rooms.find(x=>x.id===r.id)) throw new Error('Mã phòng đã tồn tại'); db.rooms.push(r); saveDBLocal(db); return r; },
+    async updateRoom(id,patch){ const db = loadDBLocal(); const idx = db.rooms.findIndex(x=>x.id===id); if(idx<0) throw new Error('Không tìm thấy'); db.rooms[idx] = Object.assign(db.rooms[idx], patch); saveDBLocal(db); return db.rooms[idx]; },
+    async deleteRoom(id){ const db = loadDBLocal(); db.rooms = db.rooms.filter(x=>x.id!==id); saveDBLocal(db); return {ok:true}; },
 
     // assets
-    async getAssets(){ const db=loadDB(); return (db && db.assets) ? db.assets : []; },
-    async addAsset(a){ const db=loadDB()||{rooms:[],assets:[],inventory:[],requests:[],log:[]}; if(db.assets.find(x=>x.id===a.id)) throw new Error('ID đã tồn tại'); db.assets.unshift(a); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'add_asset',target:a.id}); return a; },
-    async updateAsset(id,patch){ const db=loadDB(); const idx=db.assets.findIndex(x=>x.id===id); if(idx<0) throw new Error('Not found'); db.assets[idx]=Object.assign(db.assets[idx],patch); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'update_asset',target:id,patch}); return db.assets[idx]; },
-    async deleteAsset(id){ const db=loadDB(); db.assets=db.assets.filter(x=>x.id!==id); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'delete_asset',target:id}); return {ok:true}; },
+    async getAssets(){ return (loadDBLocal().assets || []); },
+    async addAsset(a){ const db = loadDBLocal(); if(db.assets.find(x=>x.id===a.id)) throw new Error('ID đã tồn tại'); db.assets.unshift(a); saveDBLocal(db); return a; },
+    async updateAsset(id,patch){ const db = loadDBLocal(); const idx = db.assets.findIndex(x=>x.id===id); if(idx<0) throw new Error('Not found'); db.assets[idx] = Object.assign(db.assets[idx], patch); saveDBLocal(db); return db.assets[idx]; },
+    async deleteAsset(id){ const db = loadDBLocal(); db.assets = db.assets.filter(x=>x.id!==id); saveDBLocal(db); return {ok:true}; },
 
     // inventory
-    async getInventory(){ const db=loadDB(); return (db && db.inventory) ? db.inventory : []; },
-    async addInv(it){ const db=loadDB()||{inventory:[]}; if(db.inventory.find(x=>x.id===it.id)) throw new Error('ID tồn tại'); db.inventory.unshift(it); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'add_inv',target:it.id}); return it; },
-    async updateInv(id,patch){ const db=loadDB(); const idx=db.inventory.findIndex(x=>x.id===id); if(idx<0) throw new Error('Not found'); db.inventory[idx]=Object.assign(db.inventory[idx],patch); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'update_inv',target:id,patch}); return db.inventory[idx]; },
-    async deleteInv(id){ const db=loadDB(); db.inventory=db.inventory.filter(x=>x.id!==id); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'delete_inv',target:id}); return {ok:true}; },
+    async getInventory(){ return (loadDBLocal().inventory || []); },
+    async addInv(it){ const db = loadDBLocal(); if(db.inventory.find(x=>x.id===it.id)) throw new Error('ID tồn tại'); db.inventory.unshift(it); saveDBLocal(db); return it; },
+    async updateInv(id,patch){ const db = loadDBLocal(); const idx = db.inventory.findIndex(x=>x.id===id); if(idx<0) throw new Error('Not found'); db.inventory[idx] = Object.assign(db.inventory[idx], patch); saveDBLocal(db); return db.inventory[idx]; },
+    async deleteInv(id){ const db = loadDBLocal(); db.inventory = db.inventory.filter(x=>x.id!==id); saveDBLocal(db); return {ok:true}; },
 
     // requests
-    async getRequests(){ const db=loadDB(); return (db && db.requests) ? db.requests : []; },
-    async addRequest(r){ const db=loadDB()||{requests:[]}; if(db.requests.find(x=>x.id===r.id)) throw new Error('ID tồn tại'); r.created = new Date().toISOString(); db.requests.unshift(r); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'add_request',target:r.id}); return r; },
-    async updateRequest(id,patch){ const db=loadDB(); const idx=db.requests.findIndex(x=>x.id===id); if(idx<0) throw new Error('Not found'); db.requests[idx]=Object.assign(db.requests[idx],patch); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'update_request',target:id,patch}); return db.requests[idx]; },
-    async deleteRequest(id){ const db=loadDB(); db.requests=db.requests.filter(x=>x.id!==id); saveDB(db); db.log.unshift({ts:new Date().toISOString(),actor:getSession()?.username||'anon',action:'delete_request',target:id}); return {ok:true}; },
+    async getRequests(){ return (loadDBLocal().requests || []); },
+    async addRequest(r){ const db = loadDBLocal(); if(db.requests.find(x=>x.id===r.id)) throw new Error('ID tồn tại'); r.created = r.created || new Date().toISOString(); db.requests.unshift(r); saveDBLocal(db); return r; },
+    async updateRequest(id,patch){ const db = loadDBLocal(); const idx = db.requests.findIndex(x=>x.id===id); if(idx<0) throw new Error('Not found'); db.requests[idx] = Object.assign(db.requests[idx], patch); saveDBLocal(db); return db.requests[idx]; },
+    async deleteRequest(id){ const db = loadDBLocal(); db.requests = db.requests.filter(x=>x.id!==id); saveDBLocal(db); return {ok:true}; },
 
-    // import/export
-    async export(){ const db=loadDB()||{rooms:[],assets:[],inventory:[],requests:[]}; const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='hanthuyen_export.json'; a.click(); },
-    async import(file){ const text = await file.text(); const data = JSON.parse(text); if(!data.rooms) throw new Error('Invalid file'); saveDB(data); return {ok:true}; }
+    // users (for migration)
+    async getUsers(){ return readUsersLocal(); },
+    async addUser(u){ const users = readUsersLocal(); users[u.username] = u; writeUsersLocal(users); return u; }
   };
 
-  /* ===== UI modals / session helpers ===== */
+  // Start with local layer; when cloud sync is started, we will replace dataLayer with cloud layer
+  let dataLayer = localDataLayer;
+  let usersLayer = { register: registerUserLocal, verify: verifyUserLocal, getAll: readUsersLocal, add: writeUsersLocal };
+
+  /******************************************************************
+   * UI & Auth handling (uses dataLayer and usersLayer)
+   ******************************************************************/
+  const modalLogin = new bootstrap.Modal(document.getElementById('modalLogin'));
+  const modalSignup = new bootstrap.Modal(document.getElementById('modalSignup'));
   const modalRoom = new bootstrap.Modal(document.getElementById('modalRoom'));
   const modalAsset = new bootstrap.Modal(document.getElementById('modalAsset'));
   const modalInv = new bootstrap.Modal(document.getElementById('modalInv'));
   const modalReq = new bootstrap.Modal(document.getElementById('modalReq'));
   const modalViewReq = new bootstrap.Modal(document.getElementById('modalViewReq'));
 
-  // FIXED: single instances for login + signup to avoid inconsistent show/hide
-  const modalLoginEl = document.getElementById('modalLogin');
-  const modalLogin = bootstrap.Modal.getOrCreateInstance(modalLoginEl);
-  const modalSignupEl = document.getElementById('modalSignup');
-  const modalSignup = bootstrap.Modal.getOrCreateInstance(modalSignupEl);
-
-  function getSession(){ try{ return JSON.parse(localStorage.getItem('mk_session')); }catch(e){ return null; } }
-  function setSession(u){ localStorage.setItem('mk_session', JSON.stringify({username:u.username,role:u.role,name:u.name,ts:Date.now()})); renderCurrentUser(); }
-  function clearSessionLocal(){ localStorage.removeItem('mk_session'); renderCurrentUser(); }
+  function getSession(){ try{ return JSON.parse(localStorage.getItem('ht_session')); }catch(e){ return null; } }
+  function setSession(u){ localStorage.setItem('ht_session', JSON.stringify({username:u.username,role:u.role,name:u.name,ts:Date.now()})); renderCurrentUser(); }
+  function clearSession(){ localStorage.removeItem('ht_session'); renderCurrentUser(); }
 
   function renderCurrentUser(){
     const s = getSession();
@@ -379,64 +431,148 @@
     const loginBtn = document.getElementById('btn-open-login');
     const signupBtn = document.getElementById('btn-open-signup');
     const logoutBtn = document.getElementById('btn-logout');
-    if(s){ cuEl.innerHTML = `<span class="role-badge bg-light border">${s.name} · ${s.role}</span>`; loginBtn.style.display='none'; signupBtn.style.display='none'; logoutBtn.style.display='inline-block'; } else { cuEl.innerHTML=''; loginBtn.style.display='inline-block'; signupBtn.style.display='inline-block'; logoutBtn.style.display='none'; }
+    if(s){ cuEl.innerHTML = `<span class="role-badge bg-light border">${s.name} · ${s.role}</span>`; loginBtn.style.display='none'; signupBtn.style.display='none'; logoutBtn.style.display='inline-block'; }
+    else { cuEl.innerHTML=''; loginBtn.style.display='inline-block'; signupBtn.style.display='inline-block'; logoutBtn.style.display='none'; }
     applyRoleUI();
   }
 
   function requireRole(roles){ const s = getSession(); if(!s) return false; return roles.includes(s.role); }
 
   function applyRoleUI(){
-    // show/hide add buttons
     document.getElementById('btn-add-room').style.display = requireRole(['admin','teacher']) ? 'inline-block' : 'none';
     document.getElementById('btn-add-asset').style.display = requireRole(['admin','technician']) ? 'inline-block' : 'none';
     document.getElementById('btn-add-request').style.display = requireRole(['admin','teacher','technician']) ? 'inline-block' : 'none';
   }
 
-  // Toast helper
-  function showToast(message, title='') {
-    const container = document.getElementById('toastContainer');
+  // Fix: delegate click events so inner icons don't break target
+  document.addEventListener('click', async function(e){
+    const el = e.target.closest('[data-act]');
+    if(!el) return;
+    const act = el.dataset.act;
+    const id = el.dataset.id;
+    // Route actions
+    if(act === 'edit-room') openRoomEdit(id);
+    else if(act === 'del-room') {
+      if(!requireRole(['admin'])) return alert('Chỉ Admin được xóa');
+      if(!confirm('Xóa phòng?')) return;
+      await dataLayer.deleteRoom(id); await renderAll();
+    }
+    else if(act === 'view-asset') viewAsset(id);
+    else if(act === 'edit-asset') editAsset(id);
+    else if(act === 'del-asset') {
+      if(!requireRole(['admin'])) return alert('Chỉ Admin được xóa');
+      if(!confirm('Xóa tài sản '+id+' ?')) return;
+      await dataLayer.deleteAsset(id); await renderAll();
+    }
+    else if(act === 'edit-inv') editInv(id);
+    else if(act === 'view-req') viewRequest(id);
+    else if(act === 'edit-req') editReq(id);
+  });
+
+  // Login / Signup handlers
+  document.getElementById('btn-open-login').addEventListener('click', ()=> modalLogin.show());
+  document.getElementById('btn-open-signup').addEventListener('click', ()=> modalSignup.show());
+  document.getElementById('btn-logout').addEventListener('click', ()=> { if(confirm('Đăng xuất?')) clearSession(); });
+
+  document.getElementById('form-login').addEventListener('submit', async e=>{
+    e.preventDefault();
+    const u = document.getElementById('login-username').value.trim();
+    const p = document.getElementById('login-password').value;
+    try{
+      // try cloud verify first if usersLayer supports verifyCloud
+      let user = null;
+      if(typeof usersLayer.verifyCloud === 'function'){
+        user = await usersLayer.verifyCloud(u,p).catch(()=>null);
+      }
+      if(!user){
+        user = await usersLayer.verify(u,p);
+      }
+      setSession(user);
+      // hide modal reliably
+      try{ modalLogin.hide(); }catch(err){}
+      await renderAll();
+      toast('Đăng nhập thành công: '+user.role);
+    } catch(err){ alert(err.message); }
+    e.target.reset();
+  });
+
+  document.getElementById('form-signup').addEventListener('submit', async e=>{
+    e.preventDefault();
+    const u=document.getElementById('su-username').value.trim();
+    const p=document.getElementById('su-password').value;
+    const p2=document.getElementById('su-password2').value;
+    const role=document.getElementById('su-role').value;
+    const name=document.getElementById('su-name').value.trim() || u;
+    if(p!==p2){ alert('Mật khẩu xác nhận không khớp'); return; }
+    try{
+      // register to local store and also cloud if available
+      const lu = await usersLayer.register(u,p,role,name).catch(()=>null);
+      if(typeof usersLayer.addCloud === 'function'){
+        await usersLayer.addCloud({ username:u, name, role, created: new Date().toISOString() });
+      }
+      alert('Đăng ký thành công, vui lòng đăng nhập');
+      modalSignup.hide();
+    } catch(err){ alert('Đăng ký lỗi: '+err.message); }
+    e.target.reset();
+  });
+
+  // password strength bar
+  document.getElementById('su-password').addEventListener('input', e=>{
+    const val = e.target.value; let score=0;
+    if(val.length>=8) score+=34; if(/[A-Z]/.test(val)&&/[0-9]/.test(val)) score+=33; if(/[^A-Za-z0-9]/.test(val)) score+=33;
+    document.getElementById('pw-strength-bar').style.width = Math.min(100,score) + '%';
+  });
+
+  // toast helper
+  function toast(msg, timeout=2500){
+    const cont = document.getElementById('toastContainer');
     const id = 't'+Date.now();
-    const node = document.createElement('div');
-    node.innerHTML = `<div id="${id}" class="toast align-items-center text-bg-primary border-0 mb-2" role="alert"><div class="d-flex"><div class="toast-body">${title?'<strong>'+title+':</strong> ':''}${message}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div></div>`;
-    container.appendChild(node.firstElementChild);
-    const t = bootstrap.Toast.getOrCreateInstance(document.getElementById(id), { delay: 3000 });
-    t.show();
-    document.getElementById(id).addEventListener('hidden.bs.toast', e=> e.target.remove());
+    const el = document.createElement('div');
+    el.className = 'toast show align-items-center text-bg-primary border-0';
+    el.style.minWidth = '220px';
+    el.id = id;
+    el.innerHTML = `<div class="d-flex"><div class="toast-body">${msg}</div><button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>`;
+    cont.appendChild(el);
+    setTimeout(()=>{ try{ el.remove(); }catch(e){} }, timeout);
   }
 
-  /* ============ RENDER FUNCTIONS (action buttons depend on role) ============ */
-
+  /***************** Render / CRUD UI *****************/
   async function renderAll(){
-    await renderRooms();
-    await renderAssets();
-    await renderInv();
-    await renderReqs();
-    await renderChart();
-    renderCurrentUser();
+    await renderRooms(); await renderAssets(); await renderInv(); await renderReqs(); await renderChart(); renderCurrentUser();
   }
 
   // Rooms
   async function renderRooms(){
     const rows = await dataLayer.getRooms();
     const q = document.getElementById('search-rooms').value.trim().toLowerCase();
-    const filtered = rows.filter(r=> !q || (r.id + r.name).toLowerCase().includes(q));
-    const tbody = document.getElementById('rooms-tbody');
-    const session = getSession();
-    tbody.innerHTML = filtered.map(r=>{
-      const canEdit = session && (session.role === 'admin' || session.role === 'teacher');
-      const canDelete = session && session.role === 'admin';
-      return `<tr>
-        <td>${r.id}</td>
-        <td>${r.name}</td>
-        <td>${r.capacity||''}</td>
-        <td>${r.notes||''}</td>
+    const filtered = rows.filter(r => !q || (r.id + r.name).toLowerCase().includes(q));
+    document.getElementById('rooms-tbody').innerHTML = filtered.map(r=>{
+      const canEdit = requireRole(['admin','teacher']);
+      const canDelete = requireRole(['admin']);
+      return `
+      <tr>
+        <td>${r.id}</td><td>${r.name}</td><td>${r.capacity||''}</td><td>${r.notes||''}</td>
         <td>
-          <button class="btn btn-sm btn-outline-info me-1" data-act="view-room" data-id="${r.id}"><i class="fa-solid fa-eye"></i></button>
-          ${canEdit? `<button class="btn btn-sm btn-outline-primary me-1" data-act="edit-room" data-id="${r.id}"><i class="fa-solid fa-pen"></i></button>`:''}
-          ${canDelete? `<button class="btn btn-sm btn-outline-danger" data-act="del-room" data-id="${r.id}"><i class="fa-solid fa-trash"></i></button>` : ''}
+          <button class="btn btn-sm btn-outline-info me-1" data-act="view-room" data-id="${r.id}" title="Xem"><i class="fa-solid fa-eye"></i></button>
+          ${canEdit? `<button class="btn btn-sm btn-outline-primary me-1" data-act="edit-room" data-id="${r.id}" title="Sửa"><i class="fa-solid fa-pen"></i></button>` : ''}
+          ${canDelete? `<button class="btn btn-sm btn-outline-danger" data-act="del-room" data-id="${r.id}" title="Xóa"><i class="fa-solid fa-trash"></i></button>`: ''}
         </td>
       </tr>`;
     }).join('');
+    // wire view-room (delegated 'click' will handle edit etc; add view handler separately)
+    document.querySelectorAll('[data-act="view-room"]').forEach(b=> b.addEventListener('click', e => {
+      const id = e.target.closest('[data-id]').dataset.id;
+      viewRoom(id);
+    }));
+    document.getElementById('stat-rooms').textContent = (rows||[]).length;
+  }
+
+  function viewRoom(id){
+    (async ()=>{
+      const rows = await dataLayer.getRooms(); const r = rows.find(x=>x.id===id); if(!r) return alert('Không tìm thấy');
+      document.getElementById('view-req-title').textContent = 'Chi tiết phòng'; document.getElementById('view-req-body').innerHTML = `<p><strong>Mã:</strong> ${r.id}</p><p><strong>Tên:</strong> ${r.name}</p><p><strong>Sức chứa:</strong> ${r.capacity||''}</p><p><strong>Ghi chú:</strong> ${r.notes||''}</p>`;
+      modalViewReq.show();
+    })();
   }
 
   // Assets
@@ -445,325 +581,154 @@
     const q = document.getElementById('search-assets').value.trim().toLowerCase();
     const statusFilter = document.getElementById('filter-asset-status').value;
     const filtered = rows.filter(a=> (!q || (a.id + a.name + (a.room||'')).toLowerCase().includes(q)) && (!statusFilter || a.status===statusFilter));
-    const tbody = document.getElementById('assets-tbody');
-    const session = getSession();
-    tbody.innerHTML = filtered.map(a=>{
-      const canEdit = session && (session.role === 'admin' || session.role === 'technician');
-      const canDelete = session && session.role === 'admin';
-      return `<tr>
+    document.getElementById('assets-tbody').innerHTML = filtered.map(a=>{
+      const canEdit = requireRole(['admin','technician']);
+      const canDelete = requireRole(['admin']);
+      return `
+      <tr>
         <td>${a.id}</td><td>${a.name}</td><td>${a.room||''}</td><td>${a.status||''}</td><td>${a.purchased||''}</td>
-        <td>${a.image?'<img src="'+a.image+'" style="height:50px;border-radius:6px">':''}</td>
+        <td>${a.image? '<img src="'+a.image+'" style="height:50px;border-radius:6px;">' : ''}</td>
         <td>
           <button class="btn btn-sm btn-outline-info me-1" data-act="view-asset" data-id="${a.id}"><i class="fa-solid fa-eye"></i></button>
-          ${canEdit? `<button class="btn btn-sm btn-outline-primary me-1" data-act="edit-asset" data-id="${a.id}"><i class="fa-solid fa-pen"></i></button>`:''}
-          ${canDelete? `<button class="btn btn-sm btn-outline-danger" data-act="del-asset" data-id="${a.id}"><i class="fa-solid fa-trash"></i></button>` : ''}
+          ${canEdit? `<button class="btn btn-sm btn-outline-primary me-1" data-act="edit-asset" data-id="${a.id}"><i class="fa-solid fa-pen"></i></button>`: ''}
+          ${canDelete? `<button class="btn btn-sm btn-outline-danger" data-act="del-asset" data-id="${a.id}"><i class="fa-solid fa-trash"></i></button>`: ''}
         </td>
       </tr>`;
     }).join('');
+    document.getElementById('stat-assets').textContent = (rows||[]).length;
+  }
+
+  async function viewAsset(id){
+    const rows = await dataLayer.getAssets(); const a = rows.find(x=>x.id===id); if(!a) return alert('Không tìm thấy');
+    const html = `<div style="display:flex;gap:12px">
+      <div style="flex:1"><h5>${a.name}</h5><p class="small-muted">ID: ${a.id} · Phòng: ${a.room||''}</p><p>${a.desc||''}</p></div>
+      <div style="width:220px">${a.image? '<img src="'+a.image+'" style="width:100%;border-radius:8px">' : ''}<p class="small-muted mt-2">Ngày mua: ${a.purchased||''}<br>Giá: ${a.price? a.price.toLocaleString():''}</p></div>
+    </div>`;
+    document.getElementById('view-req-title').textContent = 'Chi tiết tài sản'; document.getElementById('view-req-body').innerHTML = html; modalViewReq.show();
   }
 
   // Inventory
   async function renderInv(){
     const rows = await dataLayer.getInventory();
-    const session = getSession();
-    const canEdit = session && (session.role === 'admin' || session.role === 'technician');
-    document.getElementById('inv-tbody').innerHTML = (rows||[]).map(i=>`<tr><td>${i.id}</td><td>${i.name}</td><td>${i.qty}</td><td>${i.unit||''}</td><td>${canEdit? `<button class="btn btn-sm btn-outline-primary" data-act="edit-inv" data-id="${i.id}">Sửa</button>` : ''}</td></tr>`).join('');
+    document.getElementById('inv-tbody').innerHTML = (rows||[]).map(i=>{
+      const canEdit = requireRole(['admin','technician']);
+      return `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.qty}</td><td>${i.unit||''}</td><td>${canEdit? `<button class="btn btn-sm btn-outline-primary" data-act="edit-inv" data-id="${i.id}">Sửa</button>` : ''}</td></tr>`;
+    }).join('');
   }
 
   // Requests
   async function renderReqs(){
     const rows = await dataLayer.getRequests();
-    const q = document.getElementById('search-req').value.trim().toLowerCase();
-    const statusFilter = document.getElementById('filter-req-status').value;
+    const q = document.getElementById('search-req').value.trim().toLowerCase(); const statusFilter = document.getElementById('filter-req-status').value;
     const filtered = rows.filter(r=> (!q || (r.id+r.title+r.reporter).toLowerCase().includes(q)) && (!statusFilter || r.status===statusFilter));
-    const session = getSession();
-    const tbody = document.getElementById('reqs-tbody');
-    tbody.innerHTML = filtered.map(r=>{
-      const isTeacherOwner = session && session.role === 'teacher' && (r.reporter === session.name || r.reporter === session.username);
-      const canEdit = session && (session.role === 'admin' || isTeacherOwner || session.role === 'technician');
-      return `<tr>
-        <td>${r.id}</td><td>${r.title}</td><td>${r.room||''}</td><td>${r.reporter||''}</td><td>${r.status}</td>
-        <td>
-          <button class="btn btn-sm btn-outline-info me-1" data-act="view-req" data-id="${r.id}"><i class="fa-solid fa-eye"></i></button>
-          ${canEdit? `<button class="btn btn-sm btn-outline-primary" data-act="edit-req" data-id="${r.id}">Sửa</button>` : ''}
-        </td>
-      </tr>`; }).join('');
+    document.getElementById('reqs-tbody').innerHTML = filtered.map(r=>{
+      const s = getSession();
+      const canEdit = s && (s.role==='admin' || s.username=== (r.reporter && r.reporter.toLowerCase()) || s.role==='technician');
+      return `<tr><td>${r.id}</td><td>${r.title}</td><td>${r.room||''}</td><td>${r.reporter||''}</td><td>${r.status}</td>
+      <td><button class="btn btn-sm btn-outline-info me-1" data-act="view-req" data-id="${r.id}"><i class="fa-solid fa-eye"></i></button>${canEdit? `<button class="btn btn-sm btn-outline-primary" data-act="edit-req" data-id="${r.id}">Sửa</button>`: ''}</td></tr>`;
+    }).join('');
     document.getElementById('stat-requests').textContent = (rows||[]).filter(r=>r.status==='open').length;
   }
 
-  /* =========== ACTION HANDLERS (event delegation) =========== */
+  async function viewRequest(id){
+    const rows = await dataLayer.getRequests(); const r = rows.find(x=>x.id===id); if(!r) return alert('Không tìm thấy');
+    const html = `<p><strong>Mã:</strong> ${r.id}</p><p><strong>Tiêu đề:</strong> ${r.title}</p><p><strong>Phòng:</strong> ${r.room||''}</p><p><strong>Người báo:</strong> ${r.reporter||''}</p><p><strong>Trạng thái:</strong> ${r.status}</p><p><strong>Mô tả:</strong><br>${r.desc||''}</p><p class="small-muted"><strong>Ngày tạo:</strong> ${r.created||''}</p>`;
+    document.getElementById('view-req-title').textContent = 'Chi tiết yêu cầu'; document.getElementById('view-req-body').innerHTML = html; modalViewReq.show();
+  }
 
-  // Rooms actions
-  document.getElementById('rooms-tbody').addEventListener('click', async (ev) => {
-    const btn = ev.target.closest('button'); if(!btn) return;
-    const act = btn.dataset.act; const id = btn.dataset.id;
+  /***************** Forms: handle submits *****************/
+  document.getElementById('form-room').addEventListener('submit', async e=>{ e.preventDefault();
+    const fd=new FormData(e.target);
+    const obj={ id:fd.get('id').trim(), name:fd.get('name').trim(), capacity:parseInt(fd.get('capacity'))||null, notes:fd.get('notes').trim(), updatedAt: new Date().toISOString() };
     try{
-      if(act === 'view-room'){ const r = (await dataLayer.getRooms()).find(x=>x.id===id); if(!r) return showToast('Không tìm thấy phòng','Lỗi'); const html = `<h5>${r.name}</h5><p class="small-muted">Mã: ${r.id}</p><p>Sức chứa: ${r.capacity||''}</p><p>Ghi chú: ${r.notes||''}</p>`; document.getElementById('view-req-title').textContent = 'Chi tiết phòng'; document.getElementById('view-req-body').innerHTML = html; modalViewReq.show(); }
-      else if(act === 'edit-room'){ await openRoomEdit(id); }
-      else if(act === 'del-room'){ if(!requireRole(['admin'])){ showToast('Chỉ Admin được xóa','Lỗi'); return; } if(!confirm('Xóa phòng '+id+' ?')) return; await dataLayer.deleteRoom(id); showToast('Đã xóa phòng'); await renderAll(); }
-    }catch(err){ showToast(err.message,'Lỗi'); }
-  });
-
-  // Assets actions
-  document.getElementById('assets-tbody').addEventListener('click', async (ev) => {
-    const btn = ev.target.closest('button'); if(!btn) return;
-    const act = btn.dataset.act; const id = btn.dataset.id;
-    try{
-      if(act === 'view-asset'){ const a = (await dataLayer.getAssets()).find(x=>x.id===id); if(!a) return showToast('Không tìm thấy','Lỗi'); const html = `<div style="display:flex;gap:12px"><div style="flex:1"><h5>${a.name}</h5><p class="small-muted">ID: ${a.id} · Phòng: ${a.room||''}</p><p>${a.desc||''}</p></div><div style="width:220px">${a.image?'<img src="'+a.image+'" style="width:100%;border-radius:8px">':''}<p class="small-muted mt-2">Ngày mua: ${a.purchased||''}<br>Giá: ${a.price? a.price.toLocaleString():''}</p></div></div>`; document.getElementById('view-req-title').textContent='Chi tiết tài sản'; document.getElementById('view-req-body').innerHTML = html; modalViewReq.show(); }
-      else if(act === 'edit-asset'){ await openAssetEdit(id); }
-      else if(act === 'del-asset'){ if(!requireRole(['admin'])){ showToast('Chỉ Admin được xóa','Lỗi'); return; } if(!confirm('Xóa tài sản '+id+' ?')) return; await dataLayer.deleteAsset(id); showToast('Đã xóa tài sản'); await renderAll(); }
-    }catch(err){ showToast(err.message,'Lỗi'); }
-  });
-
-  // Inventory actions
-  document.getElementById('inv-tbody').addEventListener('click', async (ev) => {
-    const btn = ev.target.closest('button'); if(!btn) return;
-    const act = btn.dataset.act; const id = btn.dataset.id;
-    if(act === 'edit-inv'){ await openInvEdit(id); }
-  });
-
-  // Requests actions
-  document.getElementById('reqs-tbody').addEventListener('click', async (ev) => {
-    const btn = ev.target.closest('button'); if(!btn) return;
-    const act = btn.dataset.act; const id = btn.dataset.id;
-    if(act === 'view-req'){ await viewRequest(id); }
-    else if(act === 'edit-req'){ await openReqEdit(id); }
-  });
-
-  /* =========== OPEN EDIT MODALS (respect role: enable/disable fields) =========== */
-
-  async function openRoomEdit(id){
-    const rows = await dataLayer.getRooms();
-    const r = rows.find(x=>x.id===id); if(!r) return showToast('Không tìm thấy phòng','Lỗi');
-    const f = document.getElementById('form-room'); f.reset();
-    const session = getSession();
-    f.querySelector('[name=id]').value = r.id;
-    f.querySelector('[name=name]').value = r.name||'';
-    f.querySelector('[name=capacity]').value = r.capacity||'';
-    f.querySelector('[name=notes]').value = r.notes||'';
-    if(session?.role === 'admin'){
-      f.querySelector('[name=id]').removeAttribute('readonly');
-      enableFields(f, true);
-    } else if(session?.role === 'teacher'){
-      f.querySelector('[name=id]').setAttribute('readonly','readonly');
-      enableFields(f, false);
-      f.querySelector('[name=name]').removeAttribute('disabled');
-      f.querySelector('[name=capacity]').removeAttribute('disabled');
-      f.querySelector('[name=notes]').removeAttribute('disabled');
-    } else {
-      showToast('Bạn không có quyền chỉnh sửa phòng (kỹ thuật viên không được phép)','Lỗi'); return;
-    }
-    modalRoom.show();
-  }
-
-  async function openAssetEdit(id){
-    const arr = await dataLayer.getAssets(); const a = arr.find(x=>x.id===id); if(!a) return showToast('Không tìm thấy tài sản','Lỗi');
-    const f = document.getElementById('form-asset'); f.reset();
-    const session = getSession();
-    f.querySelector('[name=id]').value = a.id;
-    f.querySelector('[name=name]').value = a.name||'';
-    f.querySelector('[name=serial]').value = a.serial||'';
-    f.querySelector('[name=category]').value = a.category||'';
-    f.querySelector('[name=room]').value = a.room||'';
-    f.querySelector('[name=status]').value = a.status||'normal';
-    f.querySelector('[name=purchased]').value = a.purchased||'';
-    f.querySelector('[name=price]').value = a.price||'';
-    f.querySelector('[name=vendor]').value = a.vendor||'';
-    f.querySelector('[name=warranty]').value = a.warranty||'';
-    f.querySelector('[name=desc]').value = a.desc||'';
-    const pre = document.getElementById('asset-preview'); if(a.image){ pre.src = a.image; pre.style.display='block'; } else pre.style.display='none';
-
-    if(session?.role === 'admin'){
-      f.querySelector('[name=id]').removeAttribute('readonly'); enableFields(f, true);
-    } else if(session?.role === 'technician'){
-      f.querySelector('[name=id]').setAttribute('readonly','readonly');
-      enableFields(f, false);
-      ['status','room','vendor','warranty','desc','serial','category'].forEach(name=> f.querySelector('[name='+name+']')?.removeAttribute('disabled'));
-    } else {
-      enableFields(f, false);
-      f.querySelector('[name=id]').setAttribute('readonly','readonly');
-      showToast('Bạn chỉ có quyền xem tài sản','');
-    }
-    modalAsset.show();
-  }
-
-  async function openInvEdit(id){
-    const arr = await dataLayer.getInventory(); const it = arr.find(x=>x.id===id); if(!it) return showToast('Không tìm thấy vật tư','Lỗi');
-    const f = document.getElementById('form-inv'); f.reset();
-    const session = getSession();
-    f.querySelector('[name=id]').value = it.id;
-    f.querySelector('[name=name]').value = it.name||'';
-    f.querySelector('[name=qty]').value = it.qty||0;
-    f.querySelector('[name=unit]').value = it.unit||'';
-    if(session?.role === 'admin'){ f.querySelector('[name=id]').removeAttribute('readonly'); enableFields(f, true); }
-    else if(session?.role === 'technician'){ f.querySelector('[name=id]').setAttribute('readonly','readonly'); enableFields(f,false); f.querySelector('[name=qty]').removeAttribute('disabled'); f.querySelector('[name=unit]').removeAttribute('disabled'); }
-    else { showToast('Bạn không có quyền chỉnh vật tư','Lỗi'); return; }
-    modalInv.show();
-  }
-
-  async function openReqEdit(id){
-    const arr = await dataLayer.getRequests(); const r = arr.find(x=>x.id===id); if(!r) return showToast('Không tìm thấy yêu cầu','Lỗi');
-    const f = document.getElementById('form-req'); f.reset();
-    const session = getSession();
-    f.querySelector('[name=id]').value = r.id;
-    f.querySelector('[name=title]').value = r.title||'';
-    f.querySelector('[name=room]').value = r.room||'';
-    f.querySelector('[name=reporter]').value = r.reporter||'';
-    f.querySelector('[name=desc]').value = r.desc||'';
-    f.querySelector('[name=status]').value = r.status||'open';
-
-    if(session?.role === 'admin'){ f.querySelector('[name=id]').removeAttribute('readonly'); enableFields(f,true); }
-    else if(session?.role === 'technician'){ f.querySelector('[name=id]').setAttribute('readonly','readonly'); enableFields(f,false); f.querySelector('[name=status]').removeAttribute('disabled'); f.querySelector('[name=desc]').removeAttribute('disabled'); }
-    else if(session?.role === 'teacher'){
-      if(r.reporter === session.name || r.reporter === session.username){ f.querySelector('[name=id]').setAttribute('readonly','readonly'); enableFields(f,false); f.querySelector('[name=title]').removeAttribute('disabled'); f.querySelector('[name=desc]').removeAttribute('disabled'); }
-      else { showToast('Bạn chỉ có thể sửa yêu cầu do chính mình tạo','Lỗi'); return; }
-    } else { showToast('Không có quyền','Lỗi'); return; }
-
-    modalReq.show();
-  }
-
-  function enableFields(formEl, enableAll){
-    const inputs = formEl.querySelectorAll('input,textarea,select,button');
-    inputs.forEach(el=>{
-      if(el.name === 'image' || el.type==='button') return;
-      if(enableAll) el.removeAttribute('disabled');
-      else el.setAttribute('disabled','disabled');
-    });
-  }
-
-  async function viewRequest(id){ const rows = await dataLayer.getRequests(); const r = rows.find(x=>x.id===id); if(!r) return showToast('Không tìm thấy','Lỗi'); const html = `<p><strong>Mã:</strong> ${r.id}</p><p><strong>Tiêu đề:</strong> ${r.title}</p><p><strong>Phòng:</strong> ${r.room||''}</p><p><strong>Người báo:</strong> ${r.reporter||''}</p><p><strong>Trạng thái:</strong> ${r.status}</p><p><strong>Mô tả:</strong><br>${r.desc||''}</p><p class="small-muted"><strong>Ngày tạo:</strong> ${r.created||''}</p>`; document.getElementById('view-req-title').textContent = 'Chi tiết yêu cầu'; document.getElementById('view-req-body').innerHTML = html; modalViewReq.show(); }
-
-  /* ========= FORM SUBMITS (with role checks and partial updates) ========= */
-
-  document.getElementById('form-room').addEventListener('submit', async e=>{
-    e.preventDefault();
-    const session = getSession();
-    const fd = new FormData(e.target);
-    const idVal = fd.get('id').trim();
-    const obj = { id: idVal, name: fd.get('name').trim(), capacity: parseInt(fd.get('capacity'))||null, notes: fd.get('notes').trim() };
-    try{
-      const idField = e.target.querySelector('[name=id]');
-      if(idField.hasAttribute('readonly')){
-        if(session?.role === 'admin'){ await dataLayer.updateRoom(obj.id, obj); }
-        else if(session?.role === 'teacher'){ const patch = { name: obj.name, capacity: obj.capacity, notes: obj.notes }; await dataLayer.updateRoom(obj.id, patch); }
-        else throw new Error('Bạn không có quyền cập nhật phòng');
-        showToast('Cập nhật phòng thành công');
+      const isEdit = document.querySelector('#form-room [name=id]').hasAttribute('data-edit');
+      if(isEdit){
+        // permission: teacher can edit name/capacity/notes; admin can edit all; technician none
+        const s = getSession(); if(!s) return alert('Bạn cần đăng nhập');
+        if(!(s.role==='admin' || s.role==='teacher')) return alert('Bạn không có quyền sửa phòng');
+        // update
+        await dataLayer.updateRoom(obj.id, obj);
       } else {
-        if(!requireRole(['admin','teacher'])) throw new Error('Bạn không có quyền tạo phòng');
+        if(!requireRole(['admin','teacher'])) return alert('Bạn không có quyền thêm phòng');
         await dataLayer.addRoom(obj);
-        showToast('Thêm phòng thành công');
       }
       modalRoom.hide();
       await renderAll();
-    }catch(err){ showToast(err.message,'Lỗi'); }
+      toast('Lưu phòng thành công');
+    }catch(err){ alert(err.message); }
   });
 
-  document.querySelector('#form-asset [name=image]').addEventListener('change', e=>{
+  // asset image preview
+  document.querySelector('#form-asset [name=image]').addEventListener('change', e=> {
     const f = e.target.files && e.target.files[0]; const pre = document.getElementById('asset-preview');
     if(!f){ pre.style.display='none'; pre.src=''; return; }
-    const r = new FileReader(); r.onload = ()=>{ pre.src = r.result; pre.style.display='block'; }; r.readAsDataURL(f);
+    const r = new FileReader(); r.onload = ()=> { pre.src = r.result; pre.style.display = 'block'; }; r.readAsDataURL(f);
   });
 
   document.getElementById('gen-asset-id').addEventListener('click', ()=> document.querySelector('#form-asset [name=id]').value = genId('AS-'));
 
   document.getElementById('form-asset').addEventListener('submit', async e=>{
     e.preventDefault();
-    const session = getSession();
-    const fd = new FormData(e.target);
+    const s = getSession(); if(!s) return alert('Bạn cần đăng nhập');
+    const fd=new FormData(e.target);
     const id = (fd.get('id')||'').trim() || genId('AS-');
-    const full = { id, name: fd.get('name').trim(), serial: fd.get('serial').trim(), category: fd.get('category').trim(), room: fd.get('room').trim(), status: fd.get('status'), purchased: fd.get('purchased')||'', price: Number(fd.get('price')||0), vendor: fd.get('vendor')||'', warranty: Number(fd.get('warranty')||0), desc: fd.get('desc')||'', updatedAt: new Date().toISOString() };
+    const obj = { id, name:fd.get('name').trim(), serial:fd.get('serial').trim(), category:fd.get('category').trim(), room:fd.get('room').trim(), status:fd.get('status'), purchased:fd.get('purchased')||'', price: Number(fd.get('price')||0), vendor:fd.get('vendor')||'', warranty: Number(fd.get('warranty')||0), desc:fd.get('desc')||'', updatedAt: new Date().toISOString() };
     const imgFile = e.target.querySelector('[name=image]').files[0];
-    if(imgFile) full.image = await fileToDataURL(imgFile);
-    else full.image = (await dataLayer.getAssets()).find(x=>x.id===id)?.image || '';
-
+    if(imgFile){ obj.image = await fileToDataURL(imgFile); } else { obj.image = obj.image || ''; }
     try{
       const existing = (await dataLayer.getAssets()).find(x=>x.id===id);
       if(existing){
-        if(session?.role === 'admin'){ await dataLayer.updateAsset(id, full); }
-        else if(session?.role === 'technician'){ const patch = { status: full.status, room: full.room, vendor: full.vendor, warranty: full.warranty, desc: full.desc, image: full.image, serial: full.serial, category: full.category }; await dataLayer.updateAsset(id, patch); }
-        else throw new Error('Bạn không có quyền cập nhật tài sản');
-        showToast('Cập nhật tài sản thành công');
+        if(!requireRole(['admin','technician'])) return alert('Bạn không có quyền chỉnh sửa tài sản');
+        await dataLayer.updateAsset(id,obj);
       } else {
-        if(!requireRole(['admin','technician'])) throw new Error('Bạn không có quyền thêm tài sản');
-        await dataLayer.addAsset(full);
-        showToast('Thêm tài sản thành công');
+        if(!requireRole(['admin','technician'])) return alert('Bạn không có quyền thêm tài sản');
+        await dataLayer.addAsset(obj);
       }
-      modalAsset.hide();
-      await renderAll();
-    }catch(err){ showToast(err.message,'Lỗi'); }
+      modalAsset.hide(); await renderAll(); toast('Lưu tài sản thành công');
+    } catch(err){ alert(err.message); }
   });
 
-  document.getElementById('form-inv').addEventListener('submit', async e=>{
-    e.preventDefault();
-    const session = getSession();
-    const fd = new FormData(e.target);
-    const obj = { id: fd.get('id').trim(), name: fd.get('name').trim(), qty: parseInt(fd.get('qty'))||0, unit: fd.get('unit').trim() };
+  document.getElementById('form-inv').addEventListener('submit', async e=>{ e.preventDefault();
+    const fd=new FormData(e.target);
+    const obj={ id:fd.get('id').trim(), name:fd.get('name').trim(), qty:parseInt(fd.get('qty'))||0, unit:fd.get('unit').trim(), updatedAt: new Date().toISOString() };
     try{
       const existing = (await dataLayer.getInventory()).find(x=>x.id===obj.id);
       if(existing){
-        if(session?.role === 'admin'){ await dataLayer.updateInv(obj.id,obj); }
-        else if(session?.role === 'technician'){ const patch = { qty: obj.qty, unit: obj.unit }; await dataLayer.updateInv(obj.id, patch); }
-        else throw new Error('Bạn không có quyền cập nhật vật tư');
-        showToast('Cập nhật vật tư thành công');
+        if(!requireRole(['admin','technician'])) return alert('Bạn không có quyền sửa vật tư');
+        await dataLayer.updateInv(obj.id,obj);
       } else {
-        if(!requireRole(['admin','technician'])) throw new Error('Bạn không có quyền thêm vật tư');
+        if(!requireRole(['admin','technician'])) return alert('Bạn không có quyền thêm vật tư');
         await dataLayer.addInv(obj);
-        showToast('Thêm vật tư thành công');
       }
-      modalInv.hide();
-      await renderAll();
-    }catch(err){ showToast(err.message,'Lỗi'); }
+      modalInv.hide(); await renderAll(); toast('Lưu vật tư thành công');
+    }catch(err){ alert(err.message);} 
   });
 
-  document.getElementById('form-req').addEventListener('submit', async e=>{
-    e.preventDefault();
-    const session = getSession();
-    const fd = new FormData(e.target);
-    const id = fd.get('id').trim();
-    const obj = { id, title: fd.get('title').trim(), room: fd.get('room').trim(), reporter: fd.get('reporter').trim(), desc: fd.get('desc').trim(), status: fd.get('status') };
+  document.getElementById('form-req').addEventListener('submit', async e=>{ e.preventDefault();
+    const fd=new FormData(e.target); const obj={ id:fd.get('id').trim(), title:fd.get('title').trim(), room:fd.get('room').trim(), reporter:fd.get('reporter').trim(), desc:fd.get('desc').trim(), status:fd.get('status'), updatedAt: new Date().toISOString() };
     try{
-      const existing = (await dataLayer.getRequests()).find(x=>x.id===id);
+      const existing = (await dataLayer.getRequests()).find(x=>x.id===obj.id);
+      const s = getSession(); if(!s) return alert('Bạn cần đăng nhập');
       if(existing){
-        if(session?.role === 'admin'){ await dataLayer.updateRequest(id,obj); }
-        else if(session?.role === 'technician'){ await dataLayer.updateRequest(id, { status: obj.status, desc: obj.desc }); }
-        else if(session?.role === 'teacher'){ if(existing.reporter === session.name || existing.reporter === session.username) await dataLayer.updateRequest(id, { title: obj.title, desc: obj.desc }); else throw new Error('Bạn chỉ có thể sửa yêu cầu do mình tạo'); }
-        else throw new Error('Không có quyền');
-        showToast('Cập nhật yêu cầu thành công');
+        // only admin or reporter or technician can edit - but teacher only their own
+        if(!(s.role==='admin' || s.username === (existing.reporter && existing.reporter.toLowerCase()) || s.role==='technician')) return alert('Bạn không có quyền sửa yêu cầu này');
+        await dataLayer.updateRequest(obj.id,obj);
       } else {
-        if(!requireRole(['admin','teacher','technician'])) throw new Error('Bạn không có quyền tạo yêu cầu');
+        // new request: writer is reporter or current user
+        obj.reporter = obj.reporter || s.username || '';
         obj.created = new Date().toISOString();
         await dataLayer.addRequest(obj);
-        showToast('Tạo yêu cầu thành công');
       }
-      modalReq.hide();
-      await renderAll();
-    }catch(err){ showToast(err.message,'Lỗi'); }
+      modalReq.hide(); await renderAll(); toast('Lưu yêu cầu thành công');
+    }catch(err){ alert(err.message);} 
   });
 
-  /* ===== Buttons: open add modals, import/export, seed ===== */
-  document.getElementById('btn-add-room').addEventListener('click', ()=>{ document.getElementById('form-room').reset(); document.querySelector('#form-room [name=id]').removeAttribute('readonly'); enableFields(document.getElementById('form-room'), true); modalRoom.show(); });
-  document.getElementById('btn-add-asset').addEventListener('click', ()=>{ if(!requireRole(['admin','technician'])){ showToast('Bạn cần đăng nhập với quyền admin hoặc technician','Lỗi'); return; } document.getElementById('form-asset').reset(); document.querySelector('#form-asset [name=id]').removeAttribute('readonly'); enableFields(document.getElementById('form-asset'), true); document.getElementById('asset-preview').style.display='none'; modalAsset.show(); });
-  document.getElementById('btn-add-request').addEventListener('click', ()=>{ if(!requireRole(['admin','teacher','technician'])){ showToast('Bạn cần đăng nhập','Lỗi'); return; } document.getElementById('form-req').reset(); const f = document.getElementById('form-req'); enableFields(f,true); const s = getSession(); if(s){ f.querySelector('[name=reporter]').value = s.name || s.username; } modalReq.show(); });
+  // Open modals
+  document.getElementById('btn-add-room').addEventListener('click', ()=> { document.getElementById('form-room').reset(); const idEl = document.querySelector('#form-room [name=id]'); idEl.removeAttribute('data-edit'); idEl.removeAttribute('readonly'); modalRoom.show(); });
+  document.getElementById('btn-add-asset').addEventListener('click', ()=> { if(!requireRole(['admin','technician'])){ alert('Bạn cần đăng nhập với quyền admin hoặc technician.'); return; } document.getElementById('form-asset').reset(); document.querySelector('#form-asset [name=id]').removeAttribute('readonly'); document.getElementById('asset-preview').style.display='none'; modalAsset.show(); });
+  document.getElementById('btn-add-request').addEventListener('click', ()=> { if(!requireRole(['admin','teacher','technician'])){ alert('Bạn cần đăng nhập.'); return; } document.getElementById('form-req').reset(); document.querySelector('#form-req [name=id]').removeAttribute('readonly'); modalReq.show(); });
 
-  document.getElementById('btn-export').addEventListener('click', ()=> dataLayer.export());
-  document.getElementById('btn-import').addEventListener('click', ()=> document.getElementById('file-input').click());
-  document.getElementById('file-input').addEventListener('change', async e=>{ if(!e.target.files.length) return; try{ await dataLayer.import(e.target.files[0]); showToast('Import thành công'); await renderAll(); }catch(err){ showToast('Import lỗi: '+err.message,'Lỗi'); } e.target.value=''; });
-
-  document.getElementById('seed-data').addEventListener('click', async ()=>{ if(confirm('Tạo dữ liệu mẫu (ghi đè)?')){ await dataLayer.seed(); await renderAll(); showToast('Đã tạo dữ liệu mẫu'); } });
-
-  // Login/signup handlers: use the fixed instances
-  document.getElementById('btn-open-login').addEventListener('click', ()=> modalLogin.show());
-  document.getElementById('btn-open-signup').addEventListener('click', ()=> modalSignup.show());
-  document.getElementById('btn-logout').addEventListener('click', ()=> { if(confirm('Đăng xuất?')) { clearSessionLocal(); showToast('Đã đăng xuất'); } });
-
-  document.getElementById('form-login').addEventListener('submit', async e=>{ e.preventDefault(); const u=document.getElementById('login-username').value.trim(); const p=document.getElementById('login-password').value; try{ const user = await verifyUser(u,p); setSession(user); modalLogin.hide(); showToast('Đăng nhập: '+user.role); await renderAll(); }catch(err){ showToast(err.message,'Lỗi'); } e.target.reset(); });
-
-  document.getElementById('form-signup').addEventListener('submit', async e=>{ e.preventDefault(); const u=document.getElementById('su-username').value.trim(); const p=document.getElementById('su-password').value; const p2=document.getElementById('su-password2').value; const role=document.getElementById('su-role').value; const name=document.getElementById('su-name').value.trim()||u; if(p!==p2){ showToast('Xác nhận mật khẩu không khớp','Lỗi'); return; } try{ await registerUser(u,p,role,name); showToast('Đăng ký thành công. Vui lòng đăng nhập'); modalSignup.hide(); }catch(err){ showToast(err.message,'Lỗi'); } e.target.reset(); });
-
-  document.getElementById('su-password').addEventListener('input', e=>{ const v=e.target.value; let s=0; if(v.length>=8) s+=34; if(/[A-Z]/.test(v)&&/[0-9]/.test(v)) s+=33; if(/[^A-Za-z0-9]/.test(v)) s+=33; document.getElementById('pw-strength-bar').style.width = Math.min(100,s)+'%'; });
-
-  // search / filters (debounced)
-  function debounce(fn,ms=200){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); }; }
+  // search / filters
   document.getElementById('search-rooms').addEventListener('input', debounce(()=>renderRooms(),200));
   document.getElementById('search-assets').addEventListener('input', debounce(()=>renderAssets(),200));
   document.getElementById('filter-asset-status').addEventListener('change', ()=>renderAssets());
@@ -771,15 +736,241 @@
   document.getElementById('search-req').addEventListener('input', debounce(()=>renderReqs(),200));
   document.getElementById('filter-req-status').addEventListener('change', ()=>renderReqs());
 
+  document.getElementById('btn-export').addEventListener('click', async ()=> {
+    const db = await dataLayer.getAll();
+    const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='hanthuyen_export.json'; a.click();
+  });
+  document.getElementById('btn-import').addEventListener('click', ()=> document.getElementById('file-input').click());
+  document.getElementById('file-input').addEventListener('change', async e=>{ if(!e.target.files.length) return; try{ const text = await e.target.files[0].text(); const data = JSON.parse(text); // basic merge into local or cloud
+    if(typeof dataLayer.import === 'function'){ await dataLayer.import(e.target.files[0]); alert('Import thành công'); await renderAll(); } else {
+      // fallback: write to local
+      const db = loadDBLocal(); db.rooms = data.rooms || db.rooms; db.assets = data.assets || db.assets; db.inventory = data.inventory || db.inventory; db.requests = data.requests || db.requests; saveDBLocal(db); alert('Import (local) thành công'); await renderAll();
+    }
+  } catch(err){ alert('Import lỗi: '+err.message);} e.target.value=''; });
+
+  document.getElementById('seed-data').addEventListener('click', async ()=> { if(confirm('Tạo dữ liệu mẫu (ghi đè)?')){ await dataLayer.seed(); await renderAll(); } });
+
+  // helper: convert file to dataURL
   function fileToDataURL(file){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=()=>rej('File read error'); r.readAsDataURL(file); }); }
+
+  // utils
   function genId(prefix='X'){ const n = Math.floor(Math.random()*900+100); return prefix + Date.now().toString().slice(-6) + n; }
+  function debounce(fn, ms=200){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); }; }
 
   // Chart
   let chart = null;
-  async function renderChart(){ const ctx = document.getElementById('chartStatus').getContext('2d'); const reqs = await dataLayer.getRequests(); const statusCounts = { open:0, in_progress:0, done:0 }; (reqs||[]).forEach(r=> statusCounts[r.status] = (statusCounts[r.status]||0)+1 ); const data = [statusCounts.open, statusCounts.in_progress, statusCounts.done]; if(chart) chart.destroy(); chart = new Chart(ctx, { type:'doughnut', data:{ labels:['Mới','Đang xử lý','Hoàn tất'], datasets:[{ data, backgroundColor:['#ffc107','#0d6efd','#198754'] }] }, options:{responsive:true, plugins:{legend:{position:'bottom'}}} }); }
+  async function renderChart(){
+    const ctx = document.getElementById('chartStatus').getContext('2d');
+    const reqs = await dataLayer.getRequests();
+    const statusCounts = { open:0, in_progress:0, done:0 }; (reqs||[]).forEach(r=> statusCounts[r.status] = (statusCounts[r.status]||0)+1 );
+    const data = [statusCounts.open, statusCounts.in_progress, statusCounts.done];
+    if(chart) chart.destroy();
+    chart = new Chart(ctx, { type:'doughnut', data:{ labels:['Mới','Đang xử lý','Hoàn tất'], datasets:[{ data, backgroundColor:['#ffc107','#0d6efd','#198754'] }] }, options:{responsive:true, plugins:{legend:{position:'bottom'}}} });
+  }
 
-  // initial
-  (async ()=>{ try{ const db = await dataLayer.getAll(); if(!db) await dataLayer.seed(); await renderAll(); }catch(err){ console.error(err); showToast('Lỗi khởi tạo: '+(err.message||err),'Lỗi'); } })();
+  // helper edit openers (room/asset/inv/req)
+  async function openRoomEdit(id){
+    const s = getSession(); if(!s) return alert('Bạn cần đăng nhập');
+    if(!requireRole(['admin','teacher'])) return alert('Bạn không có quyền sửa phòng');
+    const rows = await dataLayer.getRooms(); const r = rows.find(x=>x.id===id); if(!r) return alert('Không tìm thấy');
+    document.getElementById('form-room').reset();
+    const idEl = document.querySelector('#form-room [name=id]');
+    idEl.value = r.id; idEl.setAttribute('data-edit','1'); idEl.setAttribute('readonly','readonly');
+    document.querySelector('#form-room [name=name]').value = r.name || '';
+    document.querySelector('#form-room [name=capacity]').value = r.capacity || '';
+    document.querySelector('#form-room [name=notes]').value = r.notes || '';
+    // adjust editable fields: teacher may edit name/capacity/notes, admin all
+    const isAdmin = s.role==='admin';
+    document.querySelector('#form-room [name=name]').readOnly = false;
+    document.querySelector('#form-room [name=capacity]').readOnly = false;
+    document.querySelector('#form-room [name=notes]').readOnly = false;
+    modalRoom.show();
+  }
+
+  async function editAsset(id){
+    const arr = await dataLayer.getAssets(); const a = arr.find(x=>x.id===id); if(!a) return alert('Không tìm thấy');
+    const s = getSession(); if(!s) return alert('Bạn cần đăng nhập');
+    if(!(s.role==='admin' || s.role==='technician')) return alert('Bạn không có quyền chỉnh sửa');
+    document.querySelector('#form-asset [name=id]').value = a.id; document.querySelector('#form-asset [name=id]').setAttribute('readonly','readonly');
+    document.querySelector('#form-asset [name=name]').value = a.name; document.querySelector('#form-asset [name=serial]').value = a.serial||'';
+    document.querySelector('#form-asset [name=category]').value = a.category||''; document.querySelector('#form-asset [name=room]').value = a.room||'';
+    document.querySelector('#form-asset [name=status]').value = a.status||'normal'; document.querySelector('#form-asset [name=purchased]').value = a.purchased||'';
+    document.querySelector('#form-asset [name=price]').value = a.price||''; document.querySelector('#form-asset [name=vendor]').value = a.vendor||'';
+    document.querySelector('#form-asset [name=warranty]').value = a.warranty||''; document.querySelector('#form-asset [name=desc]').value = a.desc||'';
+    if(a.image){ const pre = document.getElementById('asset-preview'); pre.src = a.image; pre.style.display='block'; } else { document.getElementById('asset-preview').style.display='none'; }
+    modalAsset.show();
+  }
+
+  async function editInv(id){
+    const rows = await dataLayer.getInventory(); const it = rows.find(x=>x.id===id); if(!it) return alert('Không tìm thấy');
+    const s = getSession(); if(!s) return alert('Bạn cần đăng nhập'); if(!requireRole(['admin','technician'])) return alert('Bạn không có quyền sửa vật tư');
+    document.getElementById('form-inv').reset();
+    document.querySelector('#form-inv [name=id]').value = it.id; document.querySelector('#form-inv [name=id]').setAttribute('readonly','readonly');
+    document.querySelector('#form-inv [name=name]').value = it.name; document.querySelector('#form-inv [name=qty]').value = it.qty; document.querySelector('#form-inv [name=unit]').value = it.unit;
+    modalInv.show();
+  }
+
+  async function editReq(id){
+    const rows = await dataLayer.getRequests(); const r = rows.find(x=>x.id===id); if(!r) return alert('Không tìm thấy');
+    const s = getSession(); if(!s) return alert('Bạn cần đăng nhập');
+    // only allow admin, technician, or reporter (owner)
+    if(!(s.role==='admin' || s.role==='technician' || s.username === (r.reporter && r.reporter.toLowerCase()))) return alert('Bạn không có quyền sửa yêu cầu này');
+    document.getElementById('form-req').reset();
+    document.querySelector('#form-req [name=id]').value = r.id; document.querySelector('#form-req [name=id]').setAttribute('readonly','readonly');
+    document.querySelector('#form-req [name=title]').value = r.title; document.querySelector('#form-req [name=room]').value = r.room; document.querySelector('#form-req [name=reporter]').value = r.reporter;
+    document.querySelector('#form-req [name=desc]').value = r.desc; document.querySelector('#form-req [name=status]').value = r.status;
+    modalReq.show();
+  }
+
+  // initial render
+  (async ()=>{ try{ const db = await dataLayer.getAll(); if(!db || !(db.rooms && db.assets)) await dataLayer.seed(); renderCurrentUser(); await renderAll(); } catch(err){ console.error(err); alert('Lỗi khởi tạo: '+err.message); } })();
+
   </script>
+
+  <!-- ========== FIREBASE SYNC: add below & uncomment startRealtimeSync(firebaseConfig) after pasting your config ========== -->
+  <!-- Firebase SDK v8 -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <script>
+  /*
+    START FIREBASE SYNC:
+    - Copy your firebaseConfig object from Firebase Console (Web App) and paste into firebaseConfig below.
+    - Uncomment the call to startRealtimeSync(firebaseConfig) at the end of this script.
+    - This will:
+        * subscribe to collections: rooms, assets, inventory, requests, users
+        * merge Firestore -> localStorage (last-write-wins by updatedAt) and call renderAll()
+        * replace dataLayer with cloudDataLayer so CRUD will write to Firestore when sync active
+    - Security: in production enable Firestore Rules + Firebase Auth.
+  */
+
+  let cloudSyncHandle = null; // to keep reference
+
+  function startRealtimeSync(firebaseConfig){
+    if(!firebaseConfig || !firebaseConfig.apiKey){ console.warn('Firebase config missing, skip sync'); return; }
+    try{ if(!firebase.apps.length) firebase.initializeApp(firebaseConfig); } catch(e){ console.error('Firebase init', e); }
+    const db = firebase.firestore();
+
+    // local helper load/save
+    function loadLocal(){ try{ return JSON.parse(localStorage.getItem(DB_KEY)) || {rooms:[],assets:[],inventory:[],requests:[],users:{}} }catch(e){ return {rooms:[],assets:[],inventory:[],requests:[],users:{}} } }
+    function saveLocal(obj){ localStorage.setItem(DB_KEY, JSON.stringify(obj)); }
+
+    function mergeCollection(collName, docs){
+      const local = loadLocal();
+      const map = {};
+      (local[collName] || []).forEach(it => map[it.id] = it);
+      docs.forEach(d => {
+        const t = d.updatedAt ? new Date(d.updatedAt).getTime() : 0;
+        const ex = map[d.id];
+        const exT = ex && ex.updatedAt ? new Date(ex.updatedAt).getTime() : 0;
+        if(!ex || t >= exT) map[d.id] = d;
+      });
+      local[collName] = Object.values(map).sort((a,b)=> {
+        const ta = a.updatedAt? new Date(a.updatedAt).getTime():0;
+        const tb = b.updatedAt? new Date(b.updatedAt).getTime():0;
+        return tb - ta;
+      });
+      saveLocal(local);
+    }
+
+    // subscribe all collections
+    const collections = ['rooms','assets','inventory','requests','users'];
+    const unsub = [];
+    collections.forEach(coll => {
+      const u = db.collection(coll).onSnapshot(snapshot => {
+        const docs = [];
+        snapshot.forEach(snap => {
+          const data = snap.data(); data.id = data.id || snap.id;
+          docs.push(data);
+        });
+        // merge into local and re-render
+        mergeCollection(coll === 'users' ? 'users' : coll, docs);
+        if(typeof renderAll === 'function') renderAll();
+      }, err => console.error('snapshot err', coll, err));
+      unsub.push(u);
+    });
+
+    // cloud dataLayer wrapper (same API)
+    const cloudLayer = {
+      async getAll(){ const raw = loadLocal(); return raw; },
+      async seed(){ /* optionally push local -> cloud */ return true; },
+
+      async getRooms(){ return loadLocal().rooms || []; },
+      async addRoom(r){ r.updatedAt = new Date().toISOString(); await db.collection('rooms').doc(r.id).set(r); return r; },
+      async updateRoom(id,patch){ patch.updatedAt = new Date().toISOString(); await db.collection('rooms').doc(id).set(Object.assign({}, patch, {id}), {merge:true}); return (await db.collection('rooms').doc(id).get()).data(); },
+      async deleteRoom(id){ await db.collection('rooms').doc(id).delete(); const local = loadLocal(); local.rooms = (local.rooms||[]).filter(x=>x.id!==id); saveLocal(local); return {ok:true}; },
+
+      async getAssets(){ return loadLocal().assets || []; },
+      async addAsset(a){ a.updatedAt = new Date().toISOString(); await db.collection('assets').doc(a.id).set(a); return a; },
+      async updateAsset(id,patch){ patch.updatedAt = new Date().toISOString(); await db.collection('assets').doc(id).set(Object.assign({}, patch, {id}), {merge:true}); return (await db.collection('assets').doc(id).get()).data(); },
+      async deleteAsset(id){ await db.collection('assets').doc(id).delete(); const local = loadLocal(); local.assets = (local.assets||[]).filter(x=>x.id!==id); saveLocal(local); return {ok:true}; },
+
+      async getInventory(){ return loadLocal().inventory || []; },
+      async addInv(it){ it.updatedAt = new Date().toISOString(); await db.collection('inventory').doc(it.id).set(it); return it; },
+      async updateInv(id,patch){ patch.updatedAt = new Date().toISOString(); await db.collection('inventory').doc(id).set(Object.assign({}, patch, {id}), {merge:true}); return (await db.collection('inventory').doc(id).get()).data(); },
+      async deleteInv(id){ await db.collection('inventory').doc(id).delete(); const local = loadLocal(); local.inventory = (local.inventory||[]).filter(x=>x.id!==id); saveLocal(local); return {ok:true}; },
+
+      async getRequests(){ return loadLocal().requests || []; },
+      async addRequest(r){ r.updatedAt = new Date().toISOString(); r.created = r.created || new Date().toISOString(); await db.collection('requests').doc(r.id).set(r); return r; },
+      async updateRequest(id,patch){ patch.updatedAt = new Date().toISOString(); await db.collection('requests').doc(id).set(Object.assign({}, patch, {id}), {merge:true}); return (await db.collection('requests').doc(id).get()).data(); },
+      async deleteRequest(id){ await db.collection('requests').doc(id).delete(); const local = loadLocal(); local.requests = (local.requests||[]).filter(x=>x.id!==id); saveLocal(local); return {ok:true}; },
+
+      // users: verify/register helpers (basic)
+      async getUsers(){ return loadLocal().users || {}; },
+      async addUser(u){ // store minimal user meta in users collection
+        await db.collection('users').doc(u.username).set(Object.assign({}, u, {updatedAt: new Date().toISOString()}), {merge:true});
+        return u;
+      },
+      async import(file){ const text = await file.text(); const data = JSON.parse(text);
+        const promises = [];
+        ['rooms','assets','inventory','requests'].forEach(coll => {
+          (data[coll]||[]).forEach(it => { promises.push(db.collection(coll).doc(it.id).set(Object.assign({}, it, {updatedAt: it.updatedAt || new Date().toISOString()}), {merge:true})); });
+        });
+        await Promise.all(promises); return {ok:true};
+      }
+    };
+
+    // expose cloud sync: replace dataLayer & usersLayer but keep local fallback
+    dataLayer = cloudLayer;
+    usersLayer = {
+      // keep local register/verify but also add addCloud and verifyCloud if needed
+      register: async (username,password,role,name) => {
+        // use local register for PBKDF2 storage, then push hashed user meta to cloud users collection
+        const user = await registerUserLocal(username,password,role,name);
+        await cloudLayer.addUser({ username: user.username, name: user.name, role: user.role, created: user.created });
+        return user;
+      },
+      verify: verifyUserLocal,
+      addCloud: async (u)=> cloudLayer.addUser(u),
+      verifyCloud: null // for demo we keep local verify; implementing PBKDF2 cross-device requires storing salt/hash in cloud (not included)
+    };
+
+    cloudSyncHandle = {
+      unsubscribeAll: ()=> unsub.forEach(fn=>fn())
+    };
+    toast('Realtime sync đã kết nối (Firestore).');
+    return cloudSyncHandle;
+  }
+
+  // Example usage:
+  // const firebaseConfig = { apiKey: "...", authDomain: "...", projectId: "...", ... };
+  // const sync = startRealtimeSync(firebaseConfig);
+
+  // If you paste your firebaseConfig here and uncomment the following lines, sync will start automatically:
+  /*
+  const firebaseConfig = {
+    // PASTE FIREBASE CONFIG HERE
+    // apiKey: "...",
+    // authDomain: "...",
+    // projectId: "...",
+    // storageBucket: "...",
+    // messagingSenderId: "...",
+    // appId: "..."
+  };
+  // startRealtimeSync(firebaseConfig);
+  */
+
+  </script>
+
 </body>
 </html>
