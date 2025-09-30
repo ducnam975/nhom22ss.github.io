@@ -44,7 +44,7 @@
       </div>
       <div class="d-flex align-items-center gap-2">
         <div id="current-user"></div>
-        <button id="btn-open-sync" class="btn btn-outline-info btn-sm">Bật đồng bộ</button>
+    
         <button id="btn-open-login" class="btn btn-outline-primary btn-sm">Đăng nhập</button>
         <button id="btn-open-signup" class="btn btn-outline-success btn-sm">Đăng ký</button>
         <button id="btn-logout" class="btn btn-outline-danger btn-sm" style="display:none">Đăng xuất</button>
@@ -295,19 +295,7 @@
     <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button></div>
   </div></div></div>
 
-  <!-- Modal: Sync config (user paste firebaseConfig JSON here) -->
-  <div class="modal fade" id="modalSync" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content">
-    <div class="modal-header"><h5 class="modal-title">Bật đồng bộ (Firebase)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-    <div class="modal-body">
-      <p>Paste object <code>firebaseConfig</code> (JSON) từ Firebase Console vào ô dưới, rồi bấm <strong>Kích hoạt đồng bộ</strong>.</p>
-      <textarea id="firebase-config-input" rows="10" class="form-control" placeholder='Ví dụ: {"apiKey":"...","authDomain":"...","projectId":"...","storageBucket":"...","messagingSenderId":"...","appId":"..."}'></textarea>
-      <div class="form-text mt-2 muted-small">Lưu ý: bạn cần bật Email/Password sign-in nếu muốn sử dụng Firebase Auth.</div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Đóng</button>
-      <button id="btn-start-sync" type="button" class="btn btn-info">Kích hoạt đồng bộ</button>
-    </div>
-  </div></div></div>
+  
 
   <!-- Toast container -->
   <div class="toast-container" id="toastContainer"></div>
@@ -936,18 +924,8 @@
     return cloudSyncHandle;
   }
 
-  // Wire the "Bật đồng bộ" modal button
-  document.getElementById('btn-open-sync').addEventListener('click', ()=> modalSync.show());
-  document.getElementById('btn-start-sync').addEventListener('click', ()=> {
-    const text = document.getElementById('firebase-config-input').value.trim();
-    if(!text) return alert('Vui lòng dán firebaseConfig JSON');
-    let cfg = null;
-    try { cfg = JSON.parse(text); } catch(e){ alert('JSON không hợp lệ'); return; }
-    try {
-      startRealtimeSync(cfg);
-      modalSync.hide();
-    } catch(e){ alert('Không thể kết nối: '+e.message); console.error(e); }
-  });
+  
+  
 
   </script>
 
