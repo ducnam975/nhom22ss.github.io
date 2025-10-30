@@ -275,14 +275,15 @@
   projectId: "nhom22-37f68",
   storageBucket: "nhom22-37f68.firebasestorage.app",
   messagingSenderId: "843643018659",
-  appId: "1:843643018659:web:33d6717d1c104f89f20e16",
+  appId: "1:843643018659:web:33d6717d1c104f89f20e16", 
   measurementId: "G-JX4P1WGVJP"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
   const db = firebase.database();
-  const storage = firebase.storage();
+  const app = initializeApp ( firebaseConfig );
+const analytics = getAnalytics ( ứng dụng );
 
   // Helpers
   function nowIso(){ return new Date().toISOString(); }
