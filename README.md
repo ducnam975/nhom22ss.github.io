@@ -42,7 +42,7 @@
         <i class="fa-solid fa-school fa-2x text-primary"></i>
         <div>
           <h4 class="mb-0">THCS Hàn Thuyên</h4>
-          <div class="small-muted">Hệ thống Quản lý Cơ sở vật chất (Realtime + Export Excel)</div>
+          
         </div>
       </div>
       <div class="d-flex gap-2 align-items-center">
@@ -59,7 +59,7 @@
     <section class="hero mb-4">
       <div style="flex:1">
         <h2 class="mb-1">Hệ thống Quản lý Cơ sở vật chất — THCS Hàn Thuyên</h2>
-        <p class="small-muted">Realtime sync bằng Firebase, upload ảnh, phân quyền, xuất Excel.</p>
+        
         <div class="mt-2">
           <button id="btn-add-room" class="btn btn-primary me-2"><i class="fa-solid fa-door-open me-2"></i>Thêm phòng</button>
           <button id="btn-add-asset" class="btn btn-outline-primary me-2"><i class="fa-solid fa-box me-2"></i>Thêm thiết bị</button>
@@ -267,23 +267,24 @@
 
   <script>
   /******************************
-   * CONFIG - REPLACE with your Firebase project config
+   * CONFIG - corrected for Firebase (nhom22-37f68)
    ******************************/
-  const firebaseConfig = {  
+  const firebaseConfig = {
     apiKey: "AIzaSyCV4yZpNC9dIchdN02SaP3LISpFzz2PUrc",
-  authDomain: "nhom22-37f68.firebaseapp.com",
-  projectId: "nhom22-37f68",
-  storageBucket: "nhom22-37f68.firebasestorage.app",
-  messagingSenderId: "843643018659",
-  appId: "1:843643018659:web:33d6717d1c104f89f20e16", 
-  measurementId: "G-JX4P1WGVJP"
+    authDomain: "nhom22-37f68.firebaseapp.com",
+    databaseURL: "https://nhom22-37f68-default-rtdb.firebaseio.com",
+    projectId: "nhom22-37f68",
+    storageBucket: "nhom22-37f68.appspot.com",
+    messagingSenderId: "843643018659",
+    appId: "1:843643018659:web:33d6717d1c104f89f20e16",
+    measurementId: "G-JX4P1WGVJP"
   };
-  // Initialize Firebase
+
+  // Initialize Firebase (compat)
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
   const db = firebase.database();
-  const app = initializeApp ( firebaseConfig );
-const analytics = getAnalytics ( ứng dụng );
+  const storage = firebase.storage(); // <--- ensure storage is defined
 
   // Helpers
   function nowIso(){ return new Date().toISOString(); }
@@ -324,7 +325,7 @@ const analytics = getAnalytics ( ứng dụng );
     indicator.innerHTML = `<span class="sync-dot ${online ? 'sync-online' : 'sync-offline'}"></span><small class="small-muted">${online ? 'Đã kết nối (Realtime)' : 'Chưa kết nối'}</small>`;
   }
 
-  // AUTH handlers (same logic as before)
+  // AUTH handlers
   el('btn-open-login').addEventListener('click', ()=> modalLogin.show());
   el('btn-open-signup').addEventListener('click', ()=> modalSignup.show());
   el('btn-logout').addEventListener('click', async ()=> { if(confirm('Đăng xuất?')) await auth.signOut(); });
@@ -387,7 +388,7 @@ const analytics = getAnalytics ( ứng dụng );
     await db.ref('logs').push(entry);
   }
 
-  // CRUD wrappers (same as before)
+  // CRUD wrappers
   async function addRoom(room){ await db.ref('rooms/'+room.id).set(room); await logAction('add_room', `Thêm phòng ${room.id}`); }
   async function updateRoom(id, patch){ await db.ref('rooms/'+id).update(patch); await logAction('update_room', `Sửa phòng ${id}`); }
   async function deleteRoom(id){ await db.ref('rooms/'+id).remove(); await logAction('delete_room', `Xóa phòng ${id}`); }
@@ -399,7 +400,7 @@ const analytics = getAnalytics ( ứng dụng );
   async function addRequest(r){ await db.ref('requests/'+r.id).set({...r,created:nowIso()}); await logAction('add_request', `Tạo yêu cầu ${r.id}`); }
   async function updateRequest(id,patch){ await db.ref('requests/'+id).update(patch); await logAction('update_request', `Sửa yêu cầu ${id}`); }
 
-  /***************** RENDER & UI HANDLERS (same as before) *****************/
+  /***************** RENDER & UI HANDLERS *****************/
   async function renderAll(){
     await Promise.all([renderRooms(), renderAssets(), renderInv(), renderReqs(), renderLogs(), renderChart()]);
     el('year').textContent = new Date().getFullYear();
@@ -491,7 +492,7 @@ const analytics = getAnalytics ( ứng dụng );
     }catch(err){ notify(err.message); }
   });
 
-  el('form-asset').querySelector('input[name=image]').addEventListener('change', function(){ /* preview optional */ });
+  el('form-asset').querySelector('input[name=image]').addEventListener('change', function(){ /* optional preview */ });
 
   el('form-asset').addEventListener('submit', async (e)=> {
     e.preventDefault();
@@ -577,7 +578,6 @@ const analytics = getAnalytics ( ứng dụng );
     notify('Đã xuất Excel (có sheet Metadata)');
   }
 
-  // Wire export button
   el('btn-export-excel').addEventListener('click', async ()=> {
     try{ await exportExcel(); } catch(e){ notify('Export Excel lỗi: '+e.message); }
   });
