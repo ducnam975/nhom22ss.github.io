@@ -58,7 +58,7 @@
   <div class="container-app">
     <section class="hero mb-4 card-soft">
       <div style="flex:1">
-        <h2 class="mb-1">Hệ thống Quản lý Cơ sở vật chất</h2>
+        <h2 class="mb-1"> Quản lý Cơ sở vật chất</h2>
         
 
         <div class="top-controls d-flex gap-2">
